@@ -1,0 +1,435 @@
+syntax = "proto3";
+
+package party.v1;
+
+import "google/protobuf/timestamp.proto";
+import "common/v1/common.proto";
+
+option go_package = "github.com/cloudfresco/sc-ubl/internal/protogen/party/v1";
+
+// The PartyService service definition.
+service PartyService {
+  rpc CreateParty(CreatePartyRequest) returns (CreatePartyResponse);
+  rpc CreateChild(CreateChildRequest) returns (CreateChildResponse);
+  rpc GetParties(GetPartiesRequest) returns (GetPartiesResponse);
+  rpc GetParty(GetPartyRequest) returns (GetPartyResponse);
+  rpc GetPartyByPk(GetPartyByPkRequest) returns (GetPartyByPkResponse);
+  rpc GetTopLevelParties(GetTopLevelPartiesRequest) returns (GetTopLevelPartiesResponse);
+  rpc GetChildParties(GetChildPartiesRequest) returns (GetChildPartiesResponse);
+  rpc GetParentParty(GetParentPartyRequest) returns (GetParentPartyResponse);
+  rpc UpdateParty(UpdatePartyRequest) returns (UpdatePartyResponse);
+  rpc DeleteParty(DeletePartyRequest) returns (DeletePartyResponse);
+  rpc CreatePartyContact(CreatePartyContactRequest) returns (CreatePartyContactResponse);
+  rpc GetUsersInParties(GetUsersInPartiesRequest) returns (GetUsersInPartiesResponse);
+  rpc GetPartyContact(GetPartyContactRequest) returns (GetPartyContactResponse);
+  rpc UpdatePartyContact(UpdatePartyContactRequest) returns (UpdatePartyContactResponse);
+  rpc DeletePartyContact(DeletePartyContactRequest) returns (DeletePartyContactResponse);
+  rpc CreatePartySocialProfile(CreatePartySocialProfileRequest) returns (CreatePartySocialProfileResponse);
+  rpc GetPartySocialProfile(GetPartySocialProfileRequest) returns (GetPartySocialProfileResponse);
+  rpc CreatePartyCorporateJurisdiction(CreatePartyCorporateJurisdictionRequest) returns (CreatePartyCorporateJurisdictionResponse);
+  rpc GetPartyCorporateJurisdiction(GetPartyCorporateJurisdictionRequest) returns (GetPartyCorporateJurisdictionResponse);
+}
+
+message Party {
+  PartyD party_d = 1;
+  common.v1.PartyLegalEntityD party_legal_entity_d = 2;
+  common.v1.PartyLegalEntityT party_legal_entity_t = 3;
+  common.v1.CrUpdUser cr_upd_user = 4;
+  common.v1.CrUpdTime cr_upd_time = 5;
+  repeated PartyIdentification party_identifications = 6;
+}
+
+message PartyD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+
+  string party_endpoint_id = 4;
+  string party_endpoint_scheme_id = 5;
+
+  string party_name = 6;
+  string party_desc = 7;
+  string party_type = 8;
+
+  uint32 level_p = 9;
+  uint32 parent_id = 10;
+  uint32 num_chd = 11;
+  bool leaf = 12;
+
+  string tax_reference1 = 13;
+  string tax_reference2 = 14;
+  string public_key = 15;
+
+  uint32 address_id = 16;
+}
+
+message CreatePartyRequest {
+  string party_endpoint_id = 1;
+  string party_endpoint_scheme_id = 2;
+  string party_name = 3;
+  string party_desc = 4;
+  string party_type = 5;
+
+  string registration_name = 6;
+  string company_id = 7;
+  string registration_date = 8;
+  string registration_expiration_date = 9;
+  string company_legal_form_code = 10;
+  string company_legal_form = 11;
+  bool sole_proprietorship_indicator = 12;
+  string company_liquidation_status_code = 13;
+  int64 corporate_stock_amount = 14;
+  bool fully_paid_shares_indicator = 15;
+  string corporate_registration_id = 16;
+  string corporate_registration_name = 17;
+  string corporate_registration_type_code = 18;
+  string tax_level_code = 19;
+  string exemption_reason_code = 20;
+  string exemption_reason = 21;
+
+  string ts_id = 22;
+  string tax_scheme_name = 23;
+  string tax_type_code = 24;
+  string currency_code = 25;
+  string name1 = 61;
+  string addr_list_agency_id = 26;
+  string addr_list_id = 27;
+  string addr_list_version_id = 28;
+  string address_type_code = 29;
+  string address_format_code = 30;
+  string postbox = 31;
+  string floor1 = 32;
+  string room = 33;
+  string street_name = 34;
+  string additional_street_name = 35;
+  string block_name = 36;
+  string building_name = 37;
+  string building_number = 38;
+  string inhouse_mail = 39;
+  string department = 40;
+  string mark_attention = 41;
+  string mark_care = 42;
+  string plot_identification = 43;
+  string city_subdivision_name = 44;
+  string city_name = 45;
+  string postal_zone = 46;
+  string country_subentity = 47;
+  string country_subentity_code = 48;
+  string region = 49;
+  string district = 50;
+  string timezone_offset = 51;
+  string country_id_code = 52;
+  string country_name = 53;
+  double location_coord_lat = 54;
+  double location_coord_lon = 55;
+  string note = 56;
+  string user_id = 57;
+  uint32 parent_id = 58;
+  string tax_reference1 = 59;
+  string tax_reference2 = 60;
+  string public_key = 64;
+
+  string user_email = 62;
+  string request_id = 63;
+}
+
+message CreatePartyResponse {
+  Party party = 1;
+}
+
+message CreateChildRequest {
+  CreatePartyRequest create_party_request = 1;
+}
+
+message CreateChildResponse {
+  Party party = 1;
+}
+
+message PartyIdentification {
+  string party_identification = 1;
+  string party_identification_scheme_id = 2;
+  string party_identification_scheme_name = 3;
+  common.v1.PartyInfo party_info = 4;
+}
+
+message GetPartyRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message GetPartyResponse {
+  Party party = 1;
+}
+
+message GetPartyByPkRequest {
+  common.v1.GetByIdRequest get_by_id_request = 1;
+}
+
+message GetPartyByPkResponse {
+  Party party = 1;
+}
+
+message GetParentPartyRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message GetParentPartyResponse {
+  Party party = 1;
+}
+
+message DeletePartyRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message DeletePartyResponse {}
+
+message GetChildPartiesRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message GetChildPartiesResponse {
+  repeated Party parties = 1;
+}
+
+message GetTopLevelPartiesRequest {
+  string user_email = 2;
+  string request_id = 3;
+}
+
+message GetTopLevelPartiesResponse {
+  repeated Party parties = 1;
+}
+
+message UpdatePartyRequest {
+  string id = 1;
+  string party_name = 2;
+  string party_desc = 3;
+  string user_id = 4;
+  string user_email = 5;
+  string request_id = 6;
+}
+
+message UpdatePartyResponse {}
+
+message PartyContact {
+  PartyContactD party_contact_d = 1;
+  common.v1.PartyInfo party_info = 2;
+  common.v1.CrUpdUser cr_upd_user = 3;
+  common.v1.CrUpdTime cr_upd_time = 4;
+}
+
+message PartyContactD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string first_name = 4;
+  string middle_name = 5;
+  string last_name = 6;
+  string title = 7;
+  string name_suffix = 8;
+  string job_title = 9;
+  string org_dept = 10;
+  string email = 11;
+  string phone_mobile = 12;
+  string phone_work = 13;
+  string phone_fax = 14;
+  string country_calling_code = 15;
+  string url = 20;
+  string gender_code = 16;
+  string note = 17;
+}
+
+message CreatePartyContactRequest {
+  string first_name = 1;
+  string middle_name = 2;
+  string last_name = 3;
+  string title = 4;
+  string name_suffix = 5;
+  string job_title = 6;
+  string org_dept = 7;
+  string email = 8;
+  string phone_mobile = 9;
+  string phone_work = 10;
+  string phone_fax = 11;
+  string country_calling_code = 12;
+  string url = 19;
+  string gender_code = 13;
+  string note = 14;
+  string user_id = 15;
+  uint32 party_id = 16;
+  string user_email = 17;
+  string request_id = 18;
+}
+
+message CreatePartyContactResponse {
+  PartyContact party_contact = 1;
+}
+
+message UpdatePartyContactRequest {
+  string first_name = 1;
+  string middle_name = 2;
+  string last_name = 3;
+  string title = 4;
+  string party_contact_id = 5;
+  uint32 party_id = 6;
+  string user_email = 7;
+  string request_id = 8;
+}
+
+message UpdatePartyContactResponse {}
+
+message GetUsersInPartiesRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message GetUsersInPartiesResponse {
+  repeated PartyContact party_contacts = 1;
+}
+
+message GetPartyContactRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message GetPartyContactResponse {
+  PartyContact party_contact = 1;
+}
+
+message DeletePartyContactRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message DeletePartyContactResponse {}
+
+message PartyChd {
+  PartyChdD party_chd_d = 1;
+  common.v1.CrUpdUser cr_upd_user = 2;
+  common.v1.CrUpdTime cr_upd_time = 3;
+}
+
+message PartyChdD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  uint32 party_id = 3;
+  uint32 party_chd_id = 4;
+}
+
+message PartyContactRel {
+  uint32 id = 1;
+  uint32 party_id = 2;
+  uint32 party_contact_id = 3;
+  google.protobuf.Timestamp created_at = 4;
+  google.protobuf.Timestamp updated_at = 5;
+}
+
+message GetPartiesResponse {
+  repeated Party parties = 1;
+  string next_cursor = 2;
+}
+
+message GetPartiesRequest {
+  string limit = 1;
+  string next_cursor = 2;
+  string user_email = 3;
+  string request_id = 4;
+}
+
+message PartySocialProfile {
+  PartySocialProfileD party_social_profile_d = 1;
+  common.v1.PartyInfo party_info = 2;
+  common.v1.CrUpdUser cr_upd_user = 3;
+  common.v1.CrUpdTime cr_upd_time = 4;
+}
+
+message PartySocialProfileD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string social_profle_name = 4;
+  string social_media_type_code = 5;
+  string uri = 6;
+}
+
+message CreatePartySocialProfileRequest {
+  string social_profle_name = 1;
+  string social_media_type_code = 2;
+  string uri = 3;
+  string user_id = 4;
+  uint32 party_id = 5;
+  string user_email = 6;
+  string request_id = 7;
+}
+
+message CreatePartySocialProfileResponse {
+  PartySocialProfile party_social_profile = 1;
+}
+
+message GetPartySocialProfileRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message GetPartySocialProfileResponse {
+  PartySocialProfile party_social_profile = 1;
+}
+
+message PartyCorporateJurisdiction {
+  PartyCorporateJurisdictionD party_corporate_jurisdiction_d = 1;
+  common.v1.PartyInfo party_info = 2;
+  common.v1.CrUpdUser cr_upd_user = 3;
+  common.v1.CrUpdTime cr_upd_time = 4;
+}
+
+message PartyCorporateJurisdictionD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  uint32 address_id = 4;
+}
+
+message CreatePartyCorporateJurisdictionRequest {
+  string addr_list_agency_id = 1;
+  string addr_list_id = 2;
+  string addr_list_version_id = 3;
+  string address_type_code = 4;
+  string address_format_code = 5;
+  string postbox = 6;
+  string floor = 7;
+  string room = 8;
+  string street_name = 9;
+  string additional_street_name = 10;
+  string block_name = 11;
+  string building_name = 12;
+  string building_number = 13;
+  string inhouse_mail = 14;
+  string department = 15;
+  string mark_attention = 16;
+  string mark_care = 17;
+  string plot_identification = 18;
+  string city_subdivision_name = 19;
+  string city_name = 20;
+  string postal_zone = 21;
+  string country_subentity = 22;
+  string country_subentity_code = 23;
+  string region = 24;
+  string district = 25;
+  string timezone_offset = 26;
+  string country_id_code = 27;
+  string country_name = 28;
+  double location_coord_lat = 29;
+  double location_coord_lon = 30;
+  string note = 31;
+  string user_id = 32;
+  uint32 party_id = 33;
+  string user_email = 34;
+  string request_id = 35;
+}
+
+message CreatePartyCorporateJurisdictionResponse {
+  PartyCorporateJurisdiction party_corporate_jurisdiction = 1;
+}
+
+message GetPartyCorporateJurisdictionRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message GetPartyCorporateJurisdictionResponse {
+  PartyCorporateJurisdiction party_corporate_jurisdiction = 1;
+}

@@ -1,0 +1,16 @@
+INSERT INTO `receipt_advice_lines`
+	  (uuid4,
+    note,
+    received_quantity,
+    short_quantity,
+    received_date,
+    order_line_id,
+    despatch_line_id,
+    item_id,
+   shipment_id,
+   receipt_advice_header_id,
+status_code,
+created_at,
+updated_at,
+created_by_user_id,
+updated_by_user_id) VALUES (UNHEX(REPLACE('7a3a7239-3417-488b-89cc-b0a185ce1d19','-','')),'SAMPLE',90,10,'2019-07-23 10:04:26',1,1,1,1,1, 'active','2019-07-23 10:04:26','2019-07-23 10:04:26','auth0|673c75d516e8adb9e6ffc892','auth0|673c75d516e8adb9e6ffc892');

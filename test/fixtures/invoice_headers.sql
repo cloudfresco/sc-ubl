@@ -1,0 +1,38 @@
+INSERT INTO `invoice_headers`
+	  (uuid4,
+issue_date,
+due_date,
+tax_point_date,
+invoice_type_code,
+note,
+invoice_period_start_date,
+invoice_period_end_date,
+tax_ex_date,
+pricing_ex_date,
+payment_ex_date,
+payment_alt_ex_date,
+status_code,
+created_at,
+updated_at,
+created_by_user_id,
+updated_by_user_id) VALUES (UNHEX(REPLACE('834dd586-a1b8-4e3f-89cf-bfd25edd9a60','-','')),'2005-06-21 10:04:26','2005-06-21 10:04:26','2005-06-21 10:04:26', 'SalesInvoice', 'sample', '2005-06-12 10:04:26','2005-06-25 10:04:26','2005-06-26 10:04:26','2005-06-27 10:04:26','2005-06-28 10:04:26','2005-06-29 10:04:26','active','2019-07-23 10:04:26','2019-07-23 10:04:26','auth0|673c75d516e8adb9e6ffc892','auth0|673c75d516e8adb9e6ffc892');
+
+INSERT INTO `invoice_headers`
+	  (uuid4,
+issue_date,
+due_date,
+tax_point_date,
+invoice_type_code,
+note,
+invoice_period_start_date,
+invoice_period_end_date,
+tax_ex_date,
+pricing_ex_date,
+payment_ex_date,
+payment_alt_ex_date,
+status_code,
+created_at,
+updated_at,
+created_by_user_id,
+updated_by_user_id) VALUES
+(UNHEX(REPLACE('2cad58e0-4c28-43d6-af6d-42f223373c59','-','')),'2009-12-15 10:04:26','2009-12-15 10:04:26', '2009-11-30 10:04:26', '', 'Ordered in our booth at the convention.','2009-11-02 10:04:26','2009-12-01 10:04:26','2009-12-02 10:04:26','2009-12-03 10:04:26','2009-12-04 10:04:26','2009-12-05 10:04:26','active','2019-07-23 10:04:26','2019-07-23 10:04:26','auth0|673c75d516e8adb9e6ffc892','auth0|673c75d516e8adb9e6ffc892');

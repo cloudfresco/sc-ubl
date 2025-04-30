@@ -1,0 +1,249 @@
+syntax = "proto3";
+
+package party.v1;
+
+import "common/v1/common.proto";
+
+option go_package = "github.com/cloudfresco/sc-ubl/internal/protogen/party/v1";
+
+// The FinancialInstitutionService service definition.
+service FinancialInstitutionService {
+  rpc CreateFinancialInstitution(CreateFinancialInstitutionRequest) returns (CreateFinancialInstitutionResponse);
+  rpc GetFinancialInstitutions(GetFinancialInstitutionsRequest) returns (GetFinancialInstitutionsResponse);
+  rpc GetFinancialInstitution(GetFinancialInstitutionRequest) returns (GetFinancialInstitutionResponse);
+  rpc UpdateFinancialInstitution(UpdateFinancialInstitutionRequest) returns (UpdateFinancialInstitutionResponse);
+  rpc DeleteFinancialInstitution(DeleteFinancialInstitutionRequest) returns (DeleteFinancialInstitutionResponse);
+  rpc CreateFinancialInstitutionBranch(CreateFinancialInstitutionBranchRequest) returns (CreateFinancialInstitutionBranchResponse);
+  rpc GetFinancialInstitutionWithBranches(GetFinancialInstitutionWithBranchesRequest) returns (GetFinancialInstitutionWithBranchesResponse);
+  rpc GetFinancialInstitutionBranch(GetFinancialInstitutionBranchRequest) returns (GetFinancialInstitutionBranchResponse);
+  rpc UpdateFinancialInstitutionBranch(UpdateFinancialInstitutionBranchRequest) returns (UpdateFinancialInstitutionBranchResponse);
+  rpc DeleteFinancialInstitutionBranch(DeleteFinancialInstitutionBranchRequest) returns (DeleteFinancialInstitutionBranchResponse);
+}
+
+message FinancialInstitution {
+  FinancialInstitutionD financial_institution_d = 1;
+  common.v1.CrUpdUser cr_upd_user = 2;
+  common.v1.CrUpdTime cr_upd_time = 3;
+  repeated FinancialInstitutionBranch financial_institution_branches = 4;
+}
+
+message FinancialInstitutionD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+
+  string fi_id = 4;
+  string name1 = 5;
+  uint32 address_id = 6;
+}
+
+message FinancialInstitutions {
+  repeated FinancialInstitution financial_institutions = 1;
+}
+
+message CreateFinancialInstitutionRequest {
+  string fi_id = 1;
+  string name1 = 2;
+  string addr_list_agency_id = 3;
+  string addr_list_id = 4;
+  string addr_list_version_id = 5;
+  string address_type_code = 6;
+  string address_format_code = 7;
+  string postbox = 8;
+  string floor = 9;
+  string room = 10;
+  string street_name = 11;
+  string additional_street_name = 12;
+  string block_name = 13;
+  string building_name = 14;
+  string building_number = 15;
+  string inhouse_mail = 16;
+  string department = 17;
+  string mark_attention = 18;
+  string mark_care = 19;
+  string plot_identification = 20;
+  string city_subdivision_name = 21;
+  string city_name = 22;
+  string postal_zone = 23;
+  string country_subentity = 24;
+  string country_subentity_code = 25;
+  string region = 26;
+  string district = 27;
+  string timezone_offset = 28;
+  string country_id_code = 29;
+  string country_name = 30;
+  double location_coord_lat = 31;
+  double location_coord_lon = 32;
+  string note = 33;
+  string user_id = 34;
+  string user_email = 35;
+  string request_id = 36;
+}
+
+message CreateFinancialInstitutionResponse {
+  FinancialInstitution financial_institution = 1;
+}
+
+message UpdateFinancialInstitutionRequest {
+  string fi_id = 1;
+  string name1 = 2;
+  string user_id = 3;
+  string user_email = 4;
+  string request_id = 5;
+}
+
+message UpdateFinancialInstitutionResponse {}
+
+message GetFinancialInstitutionsRequest {
+  string limit = 1;
+  string next_cursor = 2;
+  string user_email = 3;
+  string request_id = 4;
+}
+
+message GetFinancialInstitutionsResponse {
+  repeated FinancialInstitution financial_institutions = 1;
+  string next_cursor = 2;
+}
+
+message GetFinancialInstitutionRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message GetFinancialInstitutionResponse {
+  FinancialInstitution financial_institution = 1;
+}
+
+message DeleteFinancialInstitutionRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message DeleteFinancialInstitutionResponse {}
+
+message FinancialInstitutionBranch {
+  FinancialInstitutionBranchD financial_institution_branch_d = 1;
+  common.v1.CrUpdUser cr_upd_user = 2;
+  common.v1.CrUpdTime cr_upd_time = 3;
+}
+
+message FinancialInstitutionBranchD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+
+  string fb_id = 4;
+  string name1 = 5;
+
+  uint32 financial_institution_id = 6;
+
+  uint32 address_id = 7;
+}
+
+message CreateFinancialInstitutionBranchRequest {
+  string fb_id = 1;
+  string name1 = 2;
+  uint32 financial_institution_id = 3;
+  string addr_list_agency_id = 4;
+  string addr_list_id = 5;
+  string addr_list_version_id = 6;
+  string address_type_code = 7;
+  string address_format_code = 8;
+  string postbox = 9;
+  string floor = 10;
+  string room = 11;
+  string street_name = 12;
+  string additional_street_name = 13;
+  string block_name = 14;
+  string building_name = 15;
+  string building_number = 16;
+  string inhouse_mail = 17;
+  string department = 18;
+  string mark_attention = 19;
+  string mark_care = 20;
+  string plot_identification = 21;
+  string city_subdivision_name = 22;
+  string city_name = 23;
+  string postal_zone = 24;
+  string country_subentity = 25;
+  string country_subentity_code = 26;
+  string region = 27;
+  string district = 28;
+  string timezone_offset = 29;
+  string country_id_code = 30;
+  string country_name = 31;
+  double location_coord_lat = 32;
+  double location_coord_lon = 33;
+  string note = 34;
+  string user_id = 35;
+  string user_email = 36;
+  string request_id = 37;
+}
+
+message CreateFinancialInstitutionBranchResponse {
+  FinancialInstitutionBranch financial_institution_branch = 1;
+}
+
+message UpdateFinancialInstitutionBranchRequest {
+  string fb_id = 1;
+  string name1 = 2;
+  uint32 financial_institution_id = 3;
+  string addr_list_agency_id = 4;
+  string addr_list_id = 5;
+  string addr_list_version_id = 6;
+  string address_type_code = 7;
+  string address_format_code = 8;
+  string postbox = 9;
+  string floor = 10;
+  string room = 11;
+  string street_name = 12;
+  string additional_street_name = 13;
+  string block_name = 14;
+  string building_name = 15;
+  string building_number = 16;
+  string inhouse_mail = 17;
+  string department = 18;
+  string mark_attention = 19;
+  string mark_care = 20;
+  string plot_identification = 21;
+  string city_subdivision_name = 22;
+  string city_name = 23;
+  string postal_zone = 24;
+  string country_subentity = 25;
+  string country_subentity_code = 26;
+  string region = 27;
+  string district = 28;
+  string timezone_offset = 29;
+  string country_id_code = 30;
+  string country_name = 31;
+  double location_coord_lat = 32;
+  double location_coord_lon = 33;
+  string note = 34;
+  string user_id = 35;
+  string user_email = 36;
+  string request_id = 37;
+  string financial_institution_branch_id = 38;
+}
+
+message UpdateFinancialInstitutionBranchResponse {}
+
+message GetFinancialInstitutionBranchRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message GetFinancialInstitutionBranchResponse {
+  FinancialInstitutionBranch financial_institution_branch = 1;
+}
+
+message GetFinancialInstitutionWithBranchesRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message GetFinancialInstitutionWithBranchesResponse {
+  FinancialInstitution financial_institution = 1;
+}
+
+message DeleteFinancialInstitutionBranchRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message DeleteFinancialInstitutionBranchResponse {}

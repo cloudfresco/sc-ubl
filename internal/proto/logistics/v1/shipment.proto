@@ -1,0 +1,433 @@
+syntax = "proto3";
+
+package logistics.v1;
+
+import "google/protobuf/timestamp.proto";
+import "common/v1/common.proto";
+
+option go_package = "github.com/cloudfresco/sc-ubl/internal/protogen/logistics/v1";
+
+// The ShipmentService service definition.
+service ShipmentService {
+  rpc CreateShipment(CreateShipmentRequest) returns (CreateShipmentResponse);
+  rpc CreateAllowanceCharge(CreateAllowanceChargeRequest) returns (CreateAllowanceChargeResponse);
+  rpc CreateDelivery(CreateDeliveryRequest) returns (CreateDeliveryResponse);
+  rpc CreateDeliveryTerm(CreateDeliveryTermRequest) returns (CreateDeliveryTermResponse);
+  rpc CreateDespatch(CreateDespatchRequest) returns (CreateDespatchResponse);
+  rpc CreateBillOfLading(CreateBillOfLadingRequest) returns (CreateBillOfLadingResponse);
+  rpc CreateWaybill(CreateWaybillRequest) returns (CreateWaybillResponse);
+}
+
+message Delivery {
+  DeliveryD delivery_d = 1;
+  DeliveryT delivery_t = 2;
+  common.v1.CrUpdUser cr_upd_user = 3;
+  common.v1.CrUpdTime cr_upd_time = 4;
+  repeated DeliveryTerm delivery_term = 5;
+  Despatch despatch = 6;
+}
+
+message DeliveryD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string del_id = 4;
+  double quantity = 5;
+  double minimum_quantity = 6;
+  double maximum_quantity = 7;
+  string release_id = 8;
+  string tracking_id = 9;
+  int64 minimum_batch_quantity = 10;
+  int64 maximum_batch_quantity = 11;
+  int64 consumer_unit_quantity = 12;
+  bool hazardous_risk_indicator = 13;
+  uint32 delivery_address_id = 14;
+  uint32 delivery_location_id = 15;
+  uint32 alternative_delivery_location_id = 16;
+  uint32 carrier_party_id = 17;
+  uint32 delivery_party_id = 18;
+  uint32 notify_party_id = 19;
+  uint32 despatch_id = 20;
+  uint32 shipment_id = 21;
+}
+
+message DeliveryT {
+  google.protobuf.Timestamp actual_delivery_date = 1;
+  google.protobuf.Timestamp latest_delivery_date = 2;
+  google.protobuf.Timestamp requested_delivery_period_start_date = 3;
+  google.protobuf.Timestamp requested_delivery_period_end_date = 4;
+  google.protobuf.Timestamp promised_delivery_period_start_date = 5;
+  google.protobuf.Timestamp promised_delivery_period_end_date = 6;
+  google.protobuf.Timestamp estimated_delivery_period_start_date = 7;
+  google.protobuf.Timestamp estimated_delivery_period_end_date = 8;
+}
+
+message CreateDeliveryRequest {
+  string del_id = 1;
+  double quantity = 2;
+  double minimum_quantity = 3;
+  double maximum_quantity = 4;
+  string actual_delivery_date = 5;
+  string latest_delivery_date = 6;
+  string release_id = 7;
+  string tracking_id = 8;
+  string requested_delivery_period_start_date = 9;
+  string requested_delivery_period_end_date = 10;
+  string promised_delivery_period_start_date = 11;
+  string promised_delivery_period_end_date = 12;
+  string estimated_delivery_period_start_date = 13;
+  string estimated_delivery_period_end_date = 14;
+  int64 minimum_batch_quantity = 15;
+  int64 maximum_batch_quantity = 16;
+  int64 consumer_unit_quantity = 17;
+  bool hazardous_risk_indicator = 18;
+  uint32 delivery_address_id = 19;
+  uint32 delivery_location_id = 20;
+  uint32 alternative_delivery_location_id = 21;
+  uint32 carrier_party_id = 22;
+  uint32 delivery_party_id = 23;
+  uint32 notify_party_id = 24;
+  uint32 despatch_id = 25;
+  uint32 shipment_id = 26;
+  string user_id = 27;
+  string user_email = 28;
+  string request_id = 29;
+  common.v1.Address delivery_address = 30;
+  common.v1.Location delivery_location = 31;
+  common.v1.Location alternative_delivery_location = 32;
+}
+
+message CreateDeliveryResponse {
+  Delivery delivery = 1;
+}
+
+message DeliveryTerm {
+  DeliveryTermD delivery_term_d = 1;
+  common.v1.CrUpdUser cr_upd_user = 2;
+  common.v1.CrUpdTime cr_upd_time = 3;
+}
+
+message DeliveryTermD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string del_term_id = 4;
+  string special_terms = 5;
+  string loss_risk_responsibility_code = 6;
+  string loss_risk = 7;
+  double amount = 8;
+  uint32 delivery_location_id = 9;
+  uint32 del_term_allowance_charge_id = 10;
+  uint32 delivery_id = 11;
+}
+
+message CreateDeliveryTermRequest {
+  string del_term_id = 1;
+  string special_terms = 2;
+  string loss_risk_responsibility_code = 3;
+  string loss_risk = 4;
+  double amount = 5;
+  uint32 delivery_location_id = 6;
+  uint32 del_term_allowance_charge_id = 7;
+  uint32 delivery_id = 8;
+  string user_id = 9;
+  string user_email = 10;
+  string request_id = 11;
+  common.v1.Location delivery_location = 12;
+}
+
+message CreateDeliveryTermResponse {
+  DeliveryTerm delivery_term = 1;
+}
+
+message Despatch {
+  DespatchD despatch_d = 1;
+  DespatchT despatch_t = 2;
+}
+
+message DespatchD {
+  uint32 id = 1;
+  string desp_id = 2;
+  string release_id = 3;
+  string instructions = 4;
+  uint32 despatch_address_id = 5;
+  uint32 despatch_location_id = 6;
+  uint32 despatch_party_contact = 7;
+  uint32 despatch_party_id = 8;
+  uint32 carrier_party_id = 9;
+  uint32 notify_party_id = 10;
+}
+
+message DespatchT {
+  google.protobuf.Timestamp requested_despatch_date = 1;
+  google.protobuf.Timestamp estimated_despatch_date = 2;
+  google.protobuf.Timestamp actual_despatch_date = 3;
+  google.protobuf.Timestamp guaranteed_despatch_date = 4;
+  google.protobuf.Timestamp estimated_despatch_period_start_date = 5;
+  google.protobuf.Timestamp estimated_despatch_period_end_date = 6;
+  google.protobuf.Timestamp requested_despatch_period_start_date = 7;
+  google.protobuf.Timestamp requested_despatch_period_end_date = 8;
+}
+
+message CreateDespatchRequest {
+  string desp_id = 1;
+  string requested_despatch_date = 2;
+  string estimated_despatch_date = 3;
+  string actual_despatch_date = 4;
+  string guaranteed_despatch_date = 5;
+  string release_id = 6;
+  string instructions = 7;
+  string estimated_despatch_period_start_date = 8;
+  string estimated_despatch_period_end_date = 9;
+  string requested_despatch_period_start_date = 10;
+  string requested_despatch_period_end_date = 11;
+  uint32 despatch_address_id = 12;
+  uint32 despatch_location_id = 13;
+  uint32 despatch_party_contact = 14;
+  uint32 despatch_party_id = 15;
+  uint32 carrier_party_id = 16;
+  uint32 notify_party_id = 17;
+  string user_id = 18;
+  string user_email = 19;
+  string request_id = 20;
+  common.v1.Address despatch_address = 21;
+  common.v1.Location despatch_location = 22;
+}
+
+message CreateDespatchResponse {
+  Despatch despatch = 1;
+}
+
+message Shipment {
+  ShipmentD shipment_d = 1;
+  common.v1.CrUpdUser cr_upd_user = 2;
+  common.v1.CrUpdTime cr_upd_time = 3;
+}
+
+message ShipmentD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string sh_id = 4;
+  string shipping_priority_level_code = 5;
+  string handling_code = 6;
+  string handling_instructions = 7;
+  string information = 8;
+  double gross_weight_measure = 9;
+  double net_weight_measure = 10;
+  double net_net_weight_measure = 11;
+  double gross_volume_measure = 12;
+  double net_volume_measure = 13;
+  int64 total_goods_item_quantity = 14;
+  int64 total_transport_handling_unit_quantity = 15;
+  double insurance_value_amount = 16;
+  double declared_customs_value_amount = 17;
+  double declared_for_carriage_value_amount = 18;
+  double declared_statistics_value_amount = 19;
+  double free_on_board_value_amount = 20;
+  string special_instructions = 21;
+  string delivery_instructions = 22;
+  bool split_consignment_indicator = 23;
+  int64 consignment_quantity = 24;
+  uint32 return_address_id = 25;
+  uint32 origin_address_id = 26;
+  uint32 first_arrival_port_location_id = 27;
+  uint32 last_exit_port_location_id = 28;
+  string export_country_id_code = 29;
+  string export_country_name = 30;
+}
+
+message CreateShipmentRequest {
+  string sh_id = 1;
+  string shipping_priority_level_code = 2;
+  string handling_code = 3;
+  string handling_instructions = 4;
+  string information = 5;
+  double gross_weight_measure = 6;
+  double net_weight_measure = 7;
+  double net_net_weight_measure = 8;
+  double gross_volume_measure = 9;
+  double net_volume_measure = 10;
+  int64 total_goods_item_quantity = 11;
+  int64 total_transport_handling_unit_quantity = 12;
+  double insurance_value_amount = 13;
+  double declared_customs_value_amount = 14;
+  double declared_for_carriage_value_amount = 15;
+  double declared_statistics_value_amount = 16;
+  double free_on_board_value_amount = 17;
+  string special_instructions = 18;
+  string delivery_instructions = 19;
+  bool split_consignment_indicator = 20;
+  int64 consignment_quantity = 21;
+  uint32 return_address_id = 22;
+  uint32 origin_address_id = 23;
+  uint32 first_arrival_port_location_id = 24;
+  uint32 last_exit_port_location_id = 25;
+  string export_country_id_code = 26;
+  string export_country_name = 27;
+  string user_id = 28;
+  string user_email = 29;
+  string request_id = 30;
+  common.v1.Address return_address = 31;
+  common.v1.Address original_address = 32;
+  common.v1.Location first_arrival_port_location = 33;
+  common.v1.Location last_exit_port_location = 34;
+}
+
+message CreateShipmentResponse {
+  Shipment shipment = 1;
+}
+
+message AllowanceCharge {
+  uint32 id = 1;
+  string ac_id = 2;
+  bool charge_indicator = 3;
+  string allowance_charge_reason_code = 4;
+  string allowance_charge_reason = 5;
+  uint32 multiplier_factor_numeric = 6;
+  bool prepaid_indicator = 7;
+  uint32 sequence_numeric = 8;
+  double amount = 9;
+  double base_amount = 10;
+  double per_unit_amount = 11;
+  uint32 tax_category_id = 12;
+  uint32 tax_total_id = 13;
+}
+
+message CreateAllowanceChargeRequest {
+  string ac_id = 1;
+  bool charge_indicator = 2;
+  string allowance_charge_reason_code = 3;
+  string allowance_charge_reason = 4;
+  uint32 multiplier_factor_numeric = 5;
+  bool prepaid_indicator = 6;
+  uint32 sequence_numeric = 7;
+  double amount = 8;
+  double base_amount = 9;
+  double per_unit_amount = 10;
+  uint32 tax_category_id = 11;
+  uint32 tax_total_id = 12;
+  string user_id = 13;
+  string user_email = 14;
+  string request_id = 15;
+}
+
+message CreateAllowanceChargeResponse {
+  AllowanceCharge allowance_charge = 1;
+}
+
+message BillOfLading {
+  BillOfLadingD bill_of_lading_d = 1;
+  BillOfLadingT bill_of_lading_t = 2;
+  common.v1.CrUpdUser cr_upd_user = 3;
+  common.v1.CrUpdTime cr_upd_time = 4;
+}
+
+message BillOfLadingD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string bill_of_lading_id = 4;
+  string carrier_assigned_id = 5;
+  string name1 = 6;
+  string description = 7;
+  string note = 8;
+  string document_status_code = 9;
+  string shipping_order_id = 10;
+  bool to_order_indicator = 11;
+  bool ad_valorem_indicator = 12;
+  double declared_carriage_value_amount = 13;
+  string declared_carriage_value_amount_currency_code = 14;
+  string other_instruction = 15;
+  uint32 consignor_party_id = 16;
+  uint32 carrier_party_id = 17;
+  uint32 freight_forwarder_party_id = 18;
+  uint32 shipment_id = 19;
+}
+
+message BillOfLadingT {
+  google.protobuf.Timestamp issue_date = 1;
+}
+
+message CreateBillOfLadingRequest {
+  string bill_of_lading_id = 1;
+  string carrier_assigned_id = 2;
+  string issue_date = 3;
+  string name1 = 4;
+  string description = 5;
+  string note = 6;
+  string document_status_code = 7;
+  string shipping_order_id = 8;
+  bool to_order_indicator = 9;
+  bool ad_valorem_indicator = 10;
+  double declared_carriage_value_amount = 11;
+  string declared_carriage_value_amount_currency_code = 12;
+  string other_instruction = 13;
+  uint32 consignor_party_id = 14;
+  uint32 carrier_party_id = 15;
+  uint32 freight_forwarder_party_id = 16;
+  uint32 shipment_id = 17;
+  string user_id = 18;
+  string user_email = 19;
+  string request_id = 20;
+}
+
+message CreateBillOfLadingResponse {
+  BillOfLading bill_of_lading = 1;
+}
+
+message Waybill {
+  WaybillD waybill_d = 1;
+  WaybillT waybill_t = 2;
+  common.v1.CrUpdUser cr_upd_user = 3;
+  common.v1.CrUpdTime cr_upd_time = 4;
+}
+
+message WaybillD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string waybill_id = 4;
+  string carrier_assigned_id = 5;
+  string name1 = 6;
+  string description = 7;
+  string note = 8;
+  string shipping_order_id = 9;
+  bool ad_valorem_indicator = 10;
+  double declared_carriage_value_amount = 11;
+  string declared_carriage_value_amount_currency_code = 12;
+  string other_instruction = 13;
+  uint32 consignor_party_id = 14;
+  uint32 carrier_party_id = 15;
+  uint32 freight_forwarder_party_id = 16;
+  uint32 shipment_id = 17;
+}
+
+message WaybillT {
+  google.protobuf.Timestamp issue_date = 1;
+}
+
+message CreateWaybillRequest {
+  string waybill_id = 1;
+  string carrier_assigned_id = 2;
+  string issue_date = 3;
+  string name1 = 4;
+  string description = 5;
+  string note = 6;
+  string shipping_order_id = 7;
+  bool ad_valorem_indicator = 8;
+  double declared_carriage_value_amount = 9;
+  string declared_carriage_value_amount_currency_code = 10;
+  string other_instruction = 11;
+  uint32 consignor_party_id = 12;
+  uint32 carrier_party_id = 13;
+  uint32 freight_forwarder_party_id = 14;
+  uint32 shipment_id = 15;
+  string user_id = 16;
+  string user_email = 17;
+  string request_id = 18;
+}
+
+message CreateWaybillResponse {
+  Waybill waybill = 1;
+}

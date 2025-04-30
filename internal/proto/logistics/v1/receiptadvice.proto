@@ -1,0 +1,182 @@
+syntax = "proto3";
+
+package logistics.v1;
+
+import "google/protobuf/timestamp.proto";
+import "common/v1/common.proto";
+
+option go_package = "github.com/cloudfresco/sc-ubl/internal/protogen/logistics/v1";
+
+// The ReceiptAdviceHeaderService service definition.
+service ReceiptAdviceHeaderService {
+  rpc CreateReceiptAdviceHeader(CreateReceiptAdviceHeaderRequest) returns (CreateReceiptAdviceHeaderResponse);
+  rpc GetReceiptAdviceHeaders(GetReceiptAdviceHeadersRequest) returns (GetReceiptAdviceHeadersResponse);
+  rpc GetReceiptAdviceHeader(GetReceiptAdviceHeaderRequest) returns (GetReceiptAdviceHeaderResponse);
+  rpc GetReceiptAdviceHeaderByPk(GetReceiptAdviceHeaderByPkRequest) returns (GetReceiptAdviceHeaderByPkResponse);
+  rpc CreateReceiptAdviceLine(CreateReceiptAdviceLineRequest) returns (CreateReceiptAdviceLineResponse);
+  rpc GetReceiptAdviceLines(GetReceiptAdviceLinesRequest) returns (GetReceiptAdviceLinesResponse);
+  rpc UpdateReceiptAdviceHeader(UpdateReceiptAdviceHeaderRequest) returns (UpdateReceiptAdviceHeaderResponse);
+}
+
+message ReceiptAdviceHeader {
+  ReceiptAdviceHeaderD receipt_advice_header_d = 1;
+  ReceiptAdviceHeaderT receipt_advice_header_t = 2;
+  common.v1.CrUpdUser cr_upd_user = 3;
+  common.v1.CrUpdTime cr_upd_time = 4;
+}
+
+message ReceiptAdviceHeaderD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string rcpth_id = 4;
+  string receipt_advice_type_code = 5;
+  string note = 6;
+  uint32 line_count_numeric = 7;
+  uint32 order_id = 8;
+  uint32 despatch_id = 9;
+  uint32 delivery_customer_party_id = 10;
+  uint32 despatch_supplier_party_id = 11;
+  uint32 buyer_customer_party_id = 12;
+  uint32 seller_supplier_party_id = 13;
+  uint32 shipment_id = 14;
+}
+
+message ReceiptAdviceHeaderT {
+  google.protobuf.Timestamp issue_date = 1;
+}
+
+message CreateReceiptAdviceHeaderRequest {
+  string rcpth_id = 1;
+  string issue_date = 2;
+  string receipt_advice_type_code = 3;
+  string note = 4;
+  uint32 line_count_numeric = 5;
+  uint32 order_id = 6;
+  uint32 despatch_id = 7;
+  uint32 delivery_customer_party_id = 8;
+  uint32 despatch_supplier_party_id = 9;
+  uint32 buyer_customer_party_id = 10;
+  uint32 seller_supplier_party_id = 11;
+  uint32 shipment_id = 12;
+  string user_id = 13;
+  string user_email = 14;
+  string request_id = 15;
+  repeated CreateReceiptAdviceLineRequest receipt_advice_lines = 16;
+}
+
+message CreateReceiptAdviceHeaderResponse {
+  ReceiptAdviceHeader receipt_advice_header = 1;
+}
+
+message GetReceiptAdviceHeaderRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message GetReceiptAdviceHeaderResponse {
+  ReceiptAdviceHeader receipt_advice_header = 1;
+}
+
+message GetReceiptAdviceHeaderByPkRequest {
+  common.v1.GetByIdRequest get_by_id_request = 1;
+}
+
+message GetReceiptAdviceHeaderByPkResponse {
+  ReceiptAdviceHeader receipt_advice_header = 1;
+}
+
+message GetReceiptAdviceHeadersResponse {
+  repeated ReceiptAdviceHeader receipt_advice_headers = 1;
+  string next_cursor = 2;
+}
+
+message GetReceiptAdviceHeadersRequest {
+  string limit = 1;
+  string next_cursor = 2;
+  string user_email = 3;
+  string request_id = 4;
+}
+
+message ReceiptAdviceLine {
+  ReceiptAdviceLineD receipt_advice_line_d = 1;
+  ReceiptAdviceLineT receipt_advice_line_t = 2;
+  common.v1.CrUpdUser cr_upd_user = 3;
+  common.v1.CrUpdTime cr_upd_time = 4;
+}
+
+message ReceiptAdviceLineD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string rcptl_id = 4;
+  string note = 5;
+  uint32 received_quantity = 6;
+  uint32 short_quantity = 7;
+  string shortage_action_code = 8;
+  uint32 rejected_quantity = 9;
+  string reject_reason_code = 10;
+  string reject_reason = 11;
+  string reject_action_code = 12;
+  string quantity_discrepancy_code = 13;
+  uint32 oversupply_quantity = 14;
+  string timing_complaint_code = 15;
+  string timing_complaint = 16;
+  uint32 order_line_id = 17;
+  uint32 despatch_line_id = 18;
+  uint32 item_id = 19;
+  uint32 shipment_id = 20;
+  uint32 receipt_advice_header_id = 21;
+}
+
+message ReceiptAdviceLineT {
+  google.protobuf.Timestamp received_date = 1;
+}
+
+message CreateReceiptAdviceLineRequest {
+  string rcptl_id = 1;
+  string note = 2;
+  uint32 received_quantity = 3;
+  uint32 short_quantity = 4;
+  string shortage_action_code = 5;
+  uint32 rejected_quantity = 6;
+  string reject_reason_code = 7;
+  string reject_reason = 8;
+  string reject_action_code = 9;
+  string quantity_discrepancy_code = 10;
+  uint32 oversupply_quantity = 11;
+  string received_date = 12;
+  string timing_complaint_code = 13;
+  string timing_complaint = 14;
+  uint32 order_line_id = 15;
+  uint32 despatch_line_id = 16;
+  uint32 item_id = 17;
+  uint32 shipment_id = 18;
+  uint32 receipt_advice_header_id = 19;
+  string user_id = 20;
+  string user_email = 21;
+  string request_id = 22;
+}
+
+message CreateReceiptAdviceLineResponse {
+  ReceiptAdviceLine receipt_advice_line = 1;
+}
+
+message GetReceiptAdviceLinesRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message GetReceiptAdviceLinesResponse {
+  repeated ReceiptAdviceLine receipt_advice_lines = 1;
+}
+
+message UpdateReceiptAdviceHeaderRequest {
+  string receipt_advice_type_code = 1;
+  string note = 2;
+  uint32 line_count_numeric = 3;
+  string id = 4;
+  string user_id = 5;
+  string user_email = 6;
+  string request_id = 7;
+}
+
+message UpdateReceiptAdviceHeaderResponse {}

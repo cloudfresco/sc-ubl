@@ -1,0 +1,235 @@
+syntax = "proto3";
+
+package logistics.v1;
+
+import "common/v1/common.proto";
+
+option go_package = "github.com/cloudfresco/sc-ubl/internal/protogen/logistics/v1";
+
+// The ConsignmentService service definition.
+service ConsignmentService {
+  rpc CreateConsignment(CreateConsignmentRequest) returns (CreateConsignmentResponse);
+  rpc GetConsignments(GetConsignmentsRequest) returns (GetConsignmentsResponse);
+  rpc GetConsignment(GetConsignmentRequest) returns (GetConsignmentResponse);
+  rpc GetConsignmentByPk(GetConsignmentByPkRequest) returns (GetConsignmentByPkResponse);
+}
+
+message Consignment {
+  ConsignmentD consignment_d = 1;
+  common.v1.CrUpdUser cr_upd_user = 2;
+  common.v1.CrUpdTime cr_upd_time = 3;
+}
+
+message ConsignmentD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string cons_id = 4;
+  string carrier_assigned_id = 5;
+  string consignee_assigned_id = 6;
+  string consignor_assigned_id = 7;
+  string freight_forwarder_assigned_id = 8;
+  string broker_assigned_id = 9;
+  string contracted_carrier_assigned_id = 10;
+  string performing_carrier_assigned_id = 11;
+  string summary_description = 12;
+  double total_invoice_amount = 13;
+  double declared_customs_value_amount = 14;
+  string tariff_description = 15;
+  string tariff_code = 16;
+  double insurance_premium_amount = 17;
+  double gross_weight_measure = 18;
+  double net_weight_measure = 19;
+  double net_net_weight_measure = 20;
+  double chargeable_weight_measure = 21;
+  double gross_volume_measure = 22;
+  double net_volume_measure = 23;
+  double loading_length_measure = 24;
+  string remarks = 25;
+  bool hazardous_risk_indicator = 26;
+  bool animal_food_indicator = 27;
+  bool human_food_indicator = 28;
+  bool livestock_indicator = 29;
+  bool bulk_cargo_indicator = 30;
+  bool containerized_indicator = 31;
+  bool general_cargo_indicator = 32;
+  bool special_security_indicator = 33;
+  bool third_party_payer_indicator = 34;
+  string carrier_service_instructions = 35;
+  string customs_clearance_service_instructions = 36;
+  string forwarder_service_instructions = 37;
+  string special_service_instructions = 38;
+  uint32 sequence_id = 39;
+  string shipping_priority_level_code = 40;
+  string handling_code = 41;
+  string handling_instructions = 42;
+  string information = 43;
+  uint32 total_goods_item_quantity = 44;
+  uint32 total_transport_handling_unit_quantity = 45;
+  double insurance_value_amount = 46;
+  double declared_for_carriage_value_amount = 47;
+  double declared_statistics_value_amount = 48;
+  double free_on_board_value_amount = 49;
+  string special_instructions = 50;
+  bool split_consignment_indicator = 51;
+  string delivery_instructions = 52;
+  double consignment_quantity = 53;
+  bool consolidatable_indicator = 54;
+  string haulage_instructions = 55;
+  uint32 loading_sequence_id = 56;
+  uint32 child_consignment_quantity = 57;
+  uint32 total_packages_quantity = 58;
+  uint32 consignee_party_id = 59;
+  uint32 exporter_party_id = 60;
+  uint32 consignor_party_id = 61;
+  uint32 importer_party_id = 62;
+  uint32 carrier_party_id = 63;
+  uint32 freight_forwarder_party_id = 64;
+  uint32 notify_party_id = 65;
+  uint32 original_despatch_party_id = 66;
+  uint32 final_delivery_party_id = 67;
+  uint32 performing_carrier_party_id = 68;
+  uint32 substitute_carrier_party_id = 69;
+  uint32 logistics_operator_party_id = 70;
+  uint32 transport_advisor_party_id = 71;
+  uint32 hazardous_item_notification_party_id = 72;
+  uint32 insurance_party_id = 73;
+  uint32 mortgage_holder_party_id = 74;
+  uint32 bill_of_lading_holder_party_id = 75;
+  string original_departure_country_id_code = 76;
+  string original_departure_country_name = 77;
+  string final_destination_country_id_code = 78;
+  string final_destination_country_name = 79;
+  string transit_country_id_code = 80;
+  string transit_country_name = 81;
+  uint32 delivery_terms_id = 82;
+  uint32 payment_terms_id = 83;
+  uint32 collect_payment_terms_id = 84;
+  uint32 disbursement_payment_terms_id = 85;
+  uint32 prepaid_payment_terms_id = 86;
+  uint32 first_arrival_port_address_id = 87;
+  uint32 last_exit_port_location_address_id = 88;
+}
+
+message CreateConsignmentRequest {
+  string cons_id = 1;
+  string carrier_assigned_id = 2;
+  string consignee_assigned_id = 3;
+  string consignor_assigned_id = 4;
+  string freight_forwarder_assigned_id = 5;
+  string broker_assigned_id = 6;
+  string contracted_carrier_assigned_id = 7;
+  string performing_carrier_assigned_id = 8;
+  string summary_description = 9;
+  double total_invoice_amount = 10;
+  double declared_customs_value_amount = 11;
+  string tariff_description = 12;
+  string tariff_code = 13;
+  double insurance_premium_amount = 14;
+  double gross_weight_measure = 15;
+  double net_weight_measure = 16;
+  double net_net_weight_measure = 17;
+  double chargeable_weight_measure = 18;
+  double gross_volume_measure = 19;
+  double net_volume_measure = 20;
+  double loading_length_measure = 21;
+  string remarks = 22;
+  bool hazardous_risk_indicator = 23;
+  bool animal_food_indicator = 24;
+  bool human_food_indicator = 25;
+  bool livestock_indicator = 26;
+  bool bulk_cargo_indicator = 27;
+  bool containerized_indicator = 28;
+  bool general_cargo_indicator = 29;
+  bool special_security_indicator = 30;
+  bool third_party_payer_indicator = 31;
+  string carrier_service_instructions = 32;
+  string customs_clearance_service_instructions = 33;
+  string forwarder_service_instructions = 34;
+  string special_service_instructions = 35;
+  uint32 sequence_id = 36;
+  string shipping_priority_level_code = 37;
+  string handling_code = 38;
+  string handling_instructions = 39;
+  string information = 40;
+  uint32 total_goods_item_quantity = 41;
+  uint32 total_transport_handling_unit_quantity = 42;
+  double insurance_value_amount = 43;
+  double declared_for_carriage_value_amount = 44;
+  double declared_statistics_value_amount = 45;
+  double free_on_board_value_amount = 46;
+  string special_instructions = 47;
+  bool split_consignment_indicator = 48;
+  string delivery_instructions = 49;
+  double consignment_quantity = 50;
+  bool consolidatable_indicator = 51;
+  string haulage_instructions = 52;
+  uint32 loading_sequence_id = 53;
+  uint32 child_consignment_quantity = 54;
+  uint32 total_packages_quantity = 55;
+  uint32 consignee_party_id = 56;
+  uint32 exporter_party_id = 57;
+  uint32 consignor_party_id = 58;
+  uint32 importer_party_id = 59;
+  uint32 carrier_party_id = 60;
+  uint32 freight_forwarder_party_id = 61;
+  uint32 notify_party_id = 62;
+  uint32 original_despatch_party_id = 63;
+  uint32 final_delivery_party_id = 64;
+  uint32 performing_carrier_party_id = 65;
+  uint32 substitute_carrier_party_id = 66;
+  uint32 logistics_operator_party_id = 67;
+  uint32 transport_advisor_party_id = 68;
+  uint32 hazardous_item_notification_party_id = 69;
+  uint32 insurance_party_id = 70;
+  uint32 mortgage_holder_party_id = 71;
+  uint32 bill_of_lading_holder_party_id = 72;
+  string original_departure_country_id_code = 73;
+  string original_departure_country_name = 74;
+  string final_destination_country_id_code = 75;
+  string final_destination_country_name = 76;
+  string transit_country_id_code = 77;
+  string transit_country_name = 78;
+  uint32 delivery_terms_id = 79;
+  uint32 payment_terms_id = 80;
+  uint32 collect_payment_terms_id = 81;
+  uint32 disbursement_payment_terms_id = 82;
+  uint32 prepaid_payment_terms_id = 83;
+  uint32 first_arrival_port_address_id = 84;
+  uint32 last_exit_port_location_address_id = 85;
+  string user_id = 86;
+  string user_email = 87;
+  string request_id = 88;
+}
+
+message CreateConsignmentResponse {
+  Consignment consignment = 1;
+}
+
+message GetConsignmentRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message GetConsignmentResponse {
+  Consignment consignment = 1;
+}
+
+message GetConsignmentByPkRequest {
+  common.v1.GetByIdRequest get_by_id_request = 1;
+}
+
+message GetConsignmentByPkResponse {
+  Consignment consignment = 1;
+}
+
+message GetConsignmentsRequest {
+  string limit = 1;
+  string next_cursor = 2;
+  string user_email = 3;
+  string request_id = 4;
+}
+
+message GetConsignmentsResponse {
+  repeated Consignment consignments = 1;
+  string next_cursor = 2;
+}

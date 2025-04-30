@@ -1,0 +1,259 @@
+{"roles": 
+    [
+  
+        {
+        "role_name": "CreditNoteCud",
+        "role_description": "create or update or delete CreditNote",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "creditnote:cud",
+        "permission_description": "create or update or delete CreditNote",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892"]      
+      },
+
+      {
+        "role_name": "CreditNoteRead",
+        "role_description": "read CreditNote",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "creditnote:read",
+        "permission_description": "read CreditNote",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892"]      
+      },
+
+        {
+        "role_name": "DebitNoteCud",
+        "role_description": "create or update or delete DebitNote",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "debitnote:cud",
+        "permission_description": "create or update or delete DebitNote",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892"]      
+      },
+
+      {
+        "role_name": "DebitNoteRead",
+        "role_description": "read DebitNote",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "debitnote:read",
+        "permission_description": "read DebitNote",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892"]      
+      },
+
+        {
+        "role_name": "InvoiceCud",
+        "role_description": "create or update or delete Invoice",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "invoice:cud",
+        "permission_description": "create or update or delete Invoice",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892"]      
+      },
+
+      {
+        "role_name": "InvoiceRead",
+        "role_description": "read Invoice",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "invoice:read",
+        "permission_description": "read Invoice",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892"]      
+      },
+  
+      {
+        "role_name": "ItemCud",
+        "role_description": "create or update or delete Item",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "item:cud",
+        "permission_description": "create or update or delete Item",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892"]      
+      },
+
+      {
+        "role_name": "ItemRead",
+        "role_description": "read Item",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "item:read",
+        "permission_description": "read Item",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892"]      
+      },
+
+      {
+        "role_name": "PurchaseOrderCud",
+        "role_description": "create or update or delete PurchaseOrder",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "po:cud",
+        "permission_description": "create or update or delete PurchaseOrder",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892"]      
+      },
+
+      {
+        "role_name": "PurchaseOrderRead",
+        "role_description": "read PurchaseOrder",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "po:read",
+        "permission_description": "read PurchaseOrder",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892"]      
+      },
+
+      {
+        "role_name": "PaymentCud",
+        "role_description": "create or update or delete Payment",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "payment:cud",
+        "permission_description": "create or update or delete Payment",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892"]      
+      },
+
+      {
+        "role_name": "PaymentRead",
+        "role_description": "read Payment",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "payment:read",
+        "permission_description": "read Payment",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892"]      
+      },
+
+      {
+        "role_name": "TaxCud",
+        "role_description": "create or update or delete Tax",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "tax:cud",
+        "permission_description": "create or update or delete Tax",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892"]      
+      },
+
+      {
+        "role_name": "TaxRead",
+        "role_description": "read Tax",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "tax:read",
+        "permission_description": "read Tax",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892"]      
+      },
+
+
+
+      {
+        "role_name": "ConsignmentCud",
+        "role_description": "create or update or delete Consignment",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "cons:cud",
+        "permission_description": "create or update or delete Consignment",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892"]      
+      },
+
+      {
+        "role_name": "ConsignmentRead",
+        "role_description": "read Consignment",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "cons:read",
+        "permission_description": "read Consignment",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892"]      
+      },
+
+      {
+        "role_name": "DespatchCud",
+        "role_description": "create or update or delete Despatch",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "despatch:cud",
+        "permission_description": "create or update or delete Despatch",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892"]      
+      },
+
+      {
+        "role_name": "DespatchRead",
+        "role_description": "read Despatch",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "despatch:read",
+        "permission_description": "read Despatch",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892"]      
+      },
+
+      {
+        "role_name": "ReceiptAdviceCud",
+        "role_description": "create or update or delete ReceiptAdvice",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "rcptadv:cud",
+        "permission_description": "create or update or delete ReceiptAdvice",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892"]      
+      },
+
+      {
+        "role_name": "ReceiptAdviceRead",
+        "role_description": "read ReceiptAdvice",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "rcptadv:read",
+        "permission_description": "read ReceiptAdvice",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892"]      
+      },
+
+      {
+        "role_name": "ShipmentCud",
+        "role_description": "create or update or delete Shipment",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "shipment:cud",
+        "permission_description": "create or update or delete Shipment",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892"]      
+      },
+
+      {
+        "role_name": "ShipmentRead",
+        "role_description": "read Shipment",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "shipment:read",
+        "permission_description": "read Shipment",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892"]      
+      },
+  
+      {
+        "role_name": "FinancialInstitutionCud",
+        "role_description": "create or update or delete FinancialInstitution",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "fininst:cud",
+        "permission_description": "create or update or delete FinancialInstitution",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892"]      
+      },
+
+      {
+        "role_name": "FinancialInstitutionRead",
+        "role_description": "read FinancialInstitution",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "fininst:read",
+        "permission_description": "read FinancialInstitution",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892"]      
+      },
+    
+      {
+        "role_name": "UsersCud",
+        "role_description": "create or update or delete Users",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "users:cud",
+        "permission_description": "create or update or delete Users",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892"]
+      },
+
+      {
+        "role_name": "UsersRead",
+        "role_description": "read Users",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "users:read",
+        "permission_description": "read Users",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892"]
+      },
+
+      {
+        "role_name": "PartiesCud",
+        "role_description": "create or update or delete Parties",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "parties:cud",
+        "permission_description": "create or update or delete Parties",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892", "auth0|673c76025394cdf6b9bcbaac"]
+      },
+
+      {
+        "role_name": "PartiesRead",
+        "role_description": "read Parties",
+        "resource_server_identifier": "https://scubl.com",
+        "permission_name": "parties:read",
+        "permission_description": "read Parties",
+        "user_ids": ["auth0|673c75d516e8adb9e6ffc892", "auth0|673c76025394cdf6b9bcbaac"]
+      }
+      
+    ]
+}

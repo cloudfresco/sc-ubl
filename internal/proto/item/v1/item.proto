@@ -1,0 +1,287 @@
+syntax = "proto3";
+
+package item.v1;
+
+import "google/protobuf/timestamp.proto";
+import "common/v1/common.proto";
+
+option go_package = "github.com/cloudfresco/sc-ubl/internal/protogen/item/v1";
+
+// The ItemService service definition.
+service ItemService {
+  rpc CreateItem(CreateItemRequest) returns (CreateItemResponse);
+  rpc CreateItemProperty(CreateItemPropertyRequest) returns (CreateItemPropertyResponse);
+  rpc CreateItemPropertyGroup(CreateItemPropertyGroupRequest) returns (CreateItemPropertyGroupResponse);
+  rpc CreateItemDimension(CreateItemDimensionRequest) returns (CreateItemDimensionResponse);
+  rpc CreateItemCommodityClassification(CreateItemCommodityClassificationRequest) returns (CreateItemCommodityClassificationResponse);
+  rpc CreateItemCertificate(CreateItemCertificateRequest) returns (CreateItemCertificateResponse);
+  rpc CreateItemInstance(CreateItemInstanceRequest) returns (CreateItemInstanceResponse);
+}
+
+message Item {
+  ItemD item_d = 1;
+  common.v1.CrUpdUser cr_upd_user = 2;
+  common.v1.CrUpdTime cr_upd_time = 3;
+  repeated ItemProperty item_properties = 4;
+  repeated ItemDimension item_dimensions = 5;
+  repeated ItemCommodityClassification item_commodity_classifications = 6;
+  repeated ItemCertificate item_certificates = 7;
+  repeated ItemInstance item_instances = 8;
+}
+
+message ItemD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string description = 4;
+  int64 pack_quantity = 5;
+  int64 pack_size_numeric = 6;
+  bool catalogue_indicator = 7;
+  string item_name = 8;
+  bool hazardous_risk_indicator = 9;
+  string additional_information = 10;
+  string keyword = 11;
+  string brand_name = 12;
+  string model_name = 13;
+  string buyers_item_identification_id = 14;
+  string sellers_item_identification_id = 15;
+  string manufacturers_item_identification_id = 16;
+  string standard_item_identification_id = 17;
+  string catalogue_item_identification_id = 18;
+  string additional_item_identification_id = 19;
+  string origin_country_id_code = 20;
+  string origin_country_name = 21;
+  uint32 manufacturer_party_id = 22;
+  uint32 information_content_provider_party_id = 23;
+  uint32 tax_category_id = 24;
+}
+
+message CreateItemRequest {
+  string description = 1;
+  int64 pack_quantity = 2;
+  int64 pack_size_numeric = 3;
+  bool catalogue_indicator = 4;
+  string item_name = 5;
+  bool hazardous_risk_indicator = 6;
+  string additional_information = 7;
+  string keyword = 8;
+  string brand_name = 9;
+  string model_name = 10;
+  string buyers_item_identification_id = 11;
+  string sellers_item_identification_id = 12;
+  string manufacturers_item_identification_id = 13;
+  string standard_item_identification_id = 14;
+  string catalogue_item_identification_id = 15;
+  string additional_item_identification_id = 16;
+  string origin_country_id_code = 17;
+  string origin_country_name = 18;
+  uint32 manufacturer_party_id = 19;
+  uint32 information_content_provider_party_id = 20;
+  uint32 tax_category_id = 21;
+  string user_id = 22;
+  string user_email = 23;
+  string request_id = 24;
+}
+
+message CreateItemResponse {
+  Item item = 1;
+}
+
+message ItemProperty {
+  ItemPropertyD item_property_d = 1;
+  ItemPropertyT item_property_t = 2;
+  common.v1.CrUpdUser cr_upd_user = 3;
+  common.v1.CrUpdTime cr_upd_time = 4;
+  repeated ItemPropertyGroup item_property_groups = 20;
+}
+
+message ItemPropertyD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string item_property_id = 4;
+  string item_property_name = 5;
+  string item_property_name_code = 6;
+  string test_method = 7;
+  string value = 8;
+  double value_quantity = 9;
+  string value_qualifier = 10;
+  string importance_code = 11;
+  string list_value = 12;
+  double item_property_range_measure = 13;
+  double item_property_range_min_value = 14;
+  double item_property_range_max_value = 15;
+  uint32 item_id = 16;
+}
+
+message ItemPropertyT {
+  google.protobuf.Timestamp usability_period_start_date = 1;
+  google.protobuf.Timestamp usability_period_end_date = 2;
+}
+
+message CreateItemPropertyRequest {
+  string item_property_id = 1;
+  string item_property_name = 2;
+  string item_property_name_code = 3;
+  string test_method = 4;
+  string value = 5;
+  double value_quantity = 6;
+  string value_qualifier = 7;
+  string importance_code = 8;
+  string list_value = 9;
+  string usability_period_start_date = 10;
+  string usability_period_end_date = 11;
+  double item_property_range_measure = 12;
+  double item_property_range_min_value = 13;
+  double item_property_range_max_value = 14;
+  uint32 item_id = 15;
+  string user_id = 16;
+  string user_email = 17;
+  string request_id = 18;
+}
+
+message CreateItemPropertyResponse {
+  ItemProperty item_property = 1;
+}
+
+message ItemPropertyGroup {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string item_property_group_id = 4;
+  string item_property_group_name = 5;
+  string item_property_group_importance_code = 6;
+  uint32 item_property_id = 7;
+}
+
+message CreateItemPropertyGroupRequest {
+  string item_property_group_id = 1;
+  string item_property_group_name = 2;
+  string item_property_group_importance_code = 3;
+  uint32 item_property_id = 4;
+  string user_id = 5;
+  string user_email = 6;
+  string request_id = 7;
+}
+
+message CreateItemPropertyGroupResponse {
+  ItemPropertyGroup item_property_group = 1;
+}
+
+message ItemDimension {
+  uint32 id = 1;
+  string attribute_id = 2;
+  double measure = 3;
+  string description = 4;
+  double minimum_measure = 5;
+  double maximum_measure = 6;
+  uint32 item_id = 7;
+}
+
+message CreateItemDimensionRequest {
+  string attribute_id = 1;
+  double measure = 2;
+  string description = 3;
+  double minimum_measure = 4;
+  double maximum_measure = 5;
+  uint32 item_id = 6;
+  string user_id = 7;
+  string user_email = 8;
+  string request_id = 9;
+}
+
+message CreateItemDimensionResponse {
+  ItemDimension item_dimension = 1;
+}
+
+message ItemCommodityClassification {
+  uint32 id = 1;
+  string nature_code = 2;
+  string cargo_type_code = 3;
+  string commodity_code = 4;
+  string item_classification_code = 5;
+  uint32 item_id = 6;
+}
+
+message CreateItemCommodityClassificationRequest {
+  string nature_code = 1;
+  string cargo_type_code = 2;
+  string commodity_code = 3;
+  string item_classification_code = 4;
+  uint32 item_id = 5;
+  string user_id = 6;
+  string user_email = 7;
+  string request_id = 8;
+}
+
+message CreateItemCommodityClassificationResponse {
+  ItemCommodityClassification item_commodity_classification = 1;
+}
+
+message ItemCertificate {
+  uint32 id = 1;
+  string cert_id = 2;
+  string certificate_type_code = 3;
+  string certificate_type = 4;
+  string remarks = 5;
+  uint32 party_id = 6;
+  uint32 item_id = 7;
+}
+
+message CreateItemCertificateRequest {
+  string cert_id = 1;
+  string certificate_type_code = 2;
+  string certificate_type = 3;
+  string remarks = 4;
+  uint32 party_id = 5;
+  uint32 item_id = 6;
+  string user_id = 7;
+  string user_email = 8;
+  string request_id = 9;
+}
+
+message CreateItemCertificateResponse {
+  ItemCertificate item_certificate = 1;
+}
+
+message ItemInstance {
+  ItemInstanceD item_instance_d = 1;
+  ItemInstanceT item_instance_t = 2;
+  common.v1.CrUpdUser cr_upd_user = 3;
+  common.v1.CrUpdTime cr_upd_time = 4;
+}
+
+message ItemInstanceD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string product_trace_id = 4;
+  string registration_id = 5;
+  string serial_id = 6;
+  string lot_number_id = 7;
+  uint32 item_id = 8;
+}
+
+message ItemInstanceT {
+  google.protobuf.Timestamp manufacture_date = 1;
+  google.protobuf.Timestamp best_before_date = 2;
+  google.protobuf.Timestamp lot_expiry_date = 3;
+}
+
+message CreateItemInstanceRequest {
+  string product_trace_id = 1;
+  string manufacture_date = 2;
+  string best_before_date = 3;
+  string registration_id = 4;
+  string serial_id = 5;
+  string lot_number_id = 6;
+  string lot_expiry_date = 7;
+  uint32 item_id = 8;
+  string user_id = 9;
+  string user_email = 10;
+  string request_id = 11;
+}
+
+message CreateItemInstanceResponse {
+  ItemInstance item_instance = 1;
+}

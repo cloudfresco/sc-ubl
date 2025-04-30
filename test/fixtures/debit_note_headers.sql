@@ -1,0 +1,18 @@
+INSERT INTO `debit_note_headers`
+	  (uuid4,
+issue_date,
+note,
+tax_point_date,
+document_currency_code,
+accounting_cost,
+invoice_period_start_date,
+invoice_period_end_date,
+tax_ex_date,
+pricing_ex_date,
+payment_ex_date,
+payment_alt_ex_date,
+status_code,
+created_at,
+updated_at,
+created_by_user_id,
+updated_by_user_id) VALUES (UNHEX(REPLACE('930f8806-db24-4562-b8c7-72df75518355','-','')),'2005-12-15 10:04:26', '>Ordered in our booth at the convention', '2019-11-30 10:04:26', 'EUR', 'Project cost code 123', '2009-11-01 10:04:26','2009-11-30 10:04:26','2009-12-02 10:04:26','2009-12-03 10:04:26','2009-12-04 10:04:26','2009-12-05 10:04:26','active','2019-07-23 10:04:26','2019-07-23 10:04:26','auth0|673c75d516e8adb9e6ffc892','auth0|673c75d516e8adb9e6ffc892');

@@ -1,0 +1,262 @@
+syntax = "proto3";
+
+package common.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/cloudfresco/sc-ubl/internal/protogen/common/v1";
+
+message GetByIdRequest {
+  uint32 id = 1;
+  string user_email = 2;
+  string request_id = 3;
+}
+
+message GetRequest {
+  string id = 1;
+  string user_email = 2;
+  string request_id = 3;
+}
+
+message Empty {}
+
+message CrUpdUser {
+  string status_code = 1;
+  string created_by_user_id = 2;
+  string updated_by_user_id = 3;
+}
+
+message CrUpdTime {
+  google.protobuf.Timestamp created_at = 1;
+  google.protobuf.Timestamp updated_at = 2;
+}
+
+message PartyInfo {
+  uint32 party_id = 1;
+  string party_name = 2;
+}
+
+message PartyLegalEntity {
+  PartyLegalEntityD party_legal_entity_d = 1;
+  PartyLegalEntityT party_legal_entity_t = 2;
+}
+
+message PartyLegalEntityD {
+  string registration_name = 1;
+  string company_id = 2;
+  string company_legal_form_code = 3;
+  string company_legal_form = 4;
+  bool sole_proprietorship_indicator = 5;
+  string company_liquidation_status_code = 6;
+  int64 corporate_stock_amount = 7;
+  bool fully_paid_shares_indicator = 8;
+  string corporate_registration_id = 9;
+  string corporate_registration_name = 10;
+  string corporate_registration_type_code = 11;
+  string tax_level_code = 12;
+  string exemption_reason_code = 13;
+  string exemption_reason = 14;
+  uint32 tax_scheme_id = 15;
+}
+
+message PartyLegalEntityT {
+  google.protobuf.Timestamp registration_date = 1;
+  google.protobuf.Timestamp registration_expiration_date = 2;
+}
+
+message TaxSchemeInfo {
+  uint32 tax_scheme_id = 1;
+  string tax_scheme_name = 2;
+}
+
+message Address {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string name1 = 35;
+  string addr_list_agency_id = 4;
+  string addr_list_id = 5;
+  string addr_list_version_id = 6;
+  string address_type_code = 7;
+  string address_format_code = 8;
+  string postbox = 9;
+  string floor1 = 10;
+  string room = 11;
+  string street_name = 12;
+  string additional_street_name = 13;
+  string block_name = 14;
+  string building_name = 15;
+  string building_number = 16;
+  string inhouse_mail = 17;
+  string department = 18;
+  string mark_attention = 19;
+  string mark_care = 20;
+  string plot_identification = 21;
+  string city_subdivision_name = 22;
+  string city_name = 23;
+  string postal_zone = 24;
+  string country_subentity = 25;
+  string country_subentity_code = 26;
+  string region = 27;
+  string district = 28;
+  string timezone_offset = 29;
+  string country_id_code = 30;
+  string country_name = 31;
+  double location_coord_lat = 32;
+  double location_coord_lon = 33;
+  string note = 34;
+}
+
+message Location {
+  LocationD location_d = 1;
+  LocationT location_t = 2;
+}
+
+message LocationD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string loc_id = 4;
+  string description = 5;
+  string conditions = 6;
+  string country_subentity = 7;
+  string country_subentity_code = 8;
+  string location_type_code = 9;
+  string information_u_r_i = 10;
+  string loc_name = 11;
+  string location_coord_lat = 12;
+  string location_coord_lon = 13;
+  double altitude_measure = 14;
+  uint32 address_id = 15;
+}
+
+message LocationT {
+  google.protobuf.Timestamp validity_period_start_date = 1;
+  google.protobuf.Timestamp validity_period_end_date = 2;
+}
+
+message Role {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message CreateRole {
+  string name = 1;
+  string description = 2;
+  string auth0_domain = 3;
+  string auth0_mgmt_token = 4;
+  string user_id = 5;
+  string user_email = 6;
+  string request_id = 7;
+}
+
+message GetRole {
+  string role_id = 1;
+  string user_id = 2;
+  string auth0_domain = 3;
+  string auth0_mgmt_token = 4;
+  string user_email = 5;
+  string request_id = 6;
+}
+
+message GetRoles {
+  string auth0_domain = 1;
+  string auth0_mgmt_token = 2;
+  string user_id = 3;
+  string user_email = 4;
+  string request_id = 5;
+}
+
+message DeleteRole {
+  string role_id = 1;
+  string auth0_domain = 2;
+  string auth0_mgmt_token = 3;
+  string user_email = 4;
+  string request_id = 5;
+}
+
+message UpdateRole {
+  string role_id = 1;
+  string name = 2;
+  string description = 3;
+  string auth0_domain = 4;
+  string auth0_mgmt_token = 5;
+  string user_email = 6;
+  string request_id = 7;
+}
+
+message RolePermission {
+  string permission_name = 1;
+  string description = 2;
+  string resource_server_name = 3;
+  string resource_server_identifier = 4;
+  string role_id = 5;
+  string user_id = 6;
+  string user_email = 7;
+  string request_id = 8;
+}
+
+message AddPermisionsToRoles {
+  string resource_server_identifier = 1;
+  string permission_name = 2;
+  string role_id = 3;
+  string user_id = 4;
+  string auth0_domain = 5;
+  string auth0_mgmt_token = 6;
+  string user_email = 7;
+  string request_id = 8;
+}
+
+message RemoveRolePermission {
+  string resource_server_identifier = 1;
+  string permission_name = 2;
+  string role_id = 3;
+  string user_id = 4;
+  string auth0_domain = 5;
+  string auth0_mgmt_token = 6;
+  string user_email = 7;
+  string request_id = 8;
+}
+
+message GetRolePermissions {
+  string role_id = 1;
+  string user_id = 2;
+  string auth0_domain = 3;
+  string auth0_mgmt_token = 4;
+  string user_email = 5;
+  string request_id = 6;
+}
+
+message AssignRolesToUsers {
+  string role_id = 1;
+  string assign_to_user_id = 2;
+  string user_id = 3;
+  string auth0_domain = 4;
+  string auth0_mgmt_token = 5;
+  string user_email = 6;
+  string request_id = 7;
+}
+
+message ViewUserRoles {
+  string auth0_domain = 1;
+  string auth0_mgmt_token = 2;
+  string user_id = 3;
+  string user_email = 4;
+  string request_id = 5;
+}
+
+message AddAPIPermission {
+  repeated Permission permissions = 1;
+  string auth0_domain = 2;
+  string auth0_mgmt_token = 3;
+  string auth0_api_id = 4;
+  string user_id = 5;
+  string user_email = 6;
+  string request_id = 7;
+}
+
+message Permission {
+  string permission_name = 1;
+  string permission_description = 2;
+}

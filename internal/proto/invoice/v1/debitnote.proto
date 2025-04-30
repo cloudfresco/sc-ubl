@@ -1,0 +1,308 @@
+syntax = "proto3";
+
+package invoice.v1;
+
+import "google/protobuf/timestamp.proto";
+import "common/v1/common.proto";
+
+option go_package = "github.com/cloudfresco/sc-ubl/internal/protogen/invoice/v1";
+
+// The DebitNoteHeaderService service definition.
+service DebitNoteHeaderService {
+  rpc CreateDebitNoteHeader(CreateDebitNoteHeaderRequest) returns (CreateDebitNoteHeaderResponse);
+  rpc GetDebitNoteHeaders(GetDebitNoteHeadersRequest) returns (GetDebitNoteHeadersResponse);
+  rpc GetDebitNoteHeader(GetDebitNoteHeaderRequest) returns (GetDebitNoteHeaderResponse);
+  rpc GetDebitNoteHeaderByPk(GetDebitNoteHeaderByPkRequest) returns (GetDebitNoteHeaderByPkResponse);
+  rpc CreateDebitNoteLine(CreateDebitNoteLineRequest) returns (CreateDebitNoteLineResponse);
+  rpc GetDebitNoteLines(GetDebitNoteLinesRequest) returns (GetDebitNoteLinesResponse);
+  rpc UpdateDebitNoteHeader(UpdateDebitNoteHeaderRequest) returns (UpdateDebitNoteHeaderResponse);
+}
+
+message DebitNoteHeader {
+  DebitNoteHeaderD debit_note_header_d = 1;
+  DebitNoteHeaderT debit_note_header_t = 2;
+  common.v1.CrUpdUser cr_upd_user = 3;
+  common.v1.CrUpdTime cr_upd_time = 4;
+}
+
+message DebitNoteHeaderD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string dnh_id = 4;
+  string note = 5;
+  string document_currency_code = 6;
+  string tax_currency_code = 7;
+  string pricing_currency_code = 8;
+  string payment_currency_code = 9;
+  string payment_alt_currency_code = 10;
+  string accounting_cost_code = 11;
+  string accounting_cost = 12;
+  uint32 line_count_numeric = 13;
+  string discrepancy_response = 14;
+  uint32 order_id = 15;
+  uint32 billing_id = 16;
+  uint32 despatch_id = 17;
+  uint32 receipt_id = 18;
+  uint32 statement_id = 19;
+  uint32 contract_id = 20;
+  uint32 accounting_supplier_party_id = 21;
+  uint32 accounting_customer_party_id = 22;
+  uint32 payee_party_id = 23;
+  uint32 buyer_customer_party_id = 24;
+  uint32 seller_supplier_party_id = 25;
+  uint32 tax_representative_party_id = 26;
+  string tax_ex_source_currency_code = 27;
+  string tax_ex_source_currency_base_rate = 28;
+  string tax_ex_target_currency_code = 29;
+  string tax_ex_target_currency_base_rate = 30;
+  uint32 tax_ex_exchange_market_id = 31;
+  double tax_ex_calculation_rate = 32;
+  string tax_ex_mathematic_operator_code = 33;
+  string pricing_ex_source_currency_code = 34;
+  string pricing_ex_source_currency_base_rate = 35;
+  string pricing_ex_target_currency_code = 36;
+  string pricing_ex_target_currency_base_rate = 37;
+  uint32 pricing_ex_exchange_market_id = 38;
+  double pricing_ex_calculation_rate = 39;
+  string pricing_ex_mathematic_operator_code = 40;
+  string payment_ex_source_currency_code = 41;
+  string payment_ex_source_currency_base_rate = 42;
+  string payment_ex_target_currency_code = 43;
+  string payment_ex_target_currency_base_rate = 44;
+  uint32 payment_ex_exchange_market_id = 45;
+  double payment_ex_calculation_rate = 46;
+  string payment_ex_mathematic_operator_code = 47;
+  string payment_alt_ex_source_currency_code = 48;
+  string payment_alt_ex_source_currency_base_rate = 49;
+  string payment_alt_ex_target_currency_code = 50;
+  string payment_alt_ex_target_currency_base_rate = 51;
+  uint32 payment_alt_ex_exchange_market_id = 52;
+  double payment_alt_ex_calculation_rate = 53;
+  string payment_alt_ex_mathematic_operator_code = 54;
+  double line_extension_amount = 55;
+  double tax_exclusive_amount = 56;
+  double tax_inclusive_amount = 57;
+  double allowance_total_amount = 58;
+  double charge_total_amount = 59;
+  double withholding_tax_total_amount = 60;
+  double prepaid_amount = 61;
+  double payable_rounding_amount = 62;
+  double payable_amount = 63;
+  double payable_alternative_amount = 64;
+}
+
+message DebitNoteHeaderT {
+  google.protobuf.Timestamp issue_date = 1;
+  google.protobuf.Timestamp tax_point_date = 2;
+  google.protobuf.Timestamp invoice_period_start_date = 3;
+  google.protobuf.Timestamp invoice_period_end_date = 4;
+  google.protobuf.Timestamp tax_ex_date = 5;
+  google.protobuf.Timestamp pricing_ex_date = 6;
+  google.protobuf.Timestamp payment_ex_date = 7;
+  google.protobuf.Timestamp payment_alt_ex_date = 8;
+}
+
+message CreateDebitNoteHeaderRequest {
+  string dnh_id = 1;
+  string issue_date = 2;
+  string note = 3;
+  string tax_point_date = 4;
+  string document_currency_code = 5;
+  string tax_currency_code = 6;
+  string pricing_currency_code = 7;
+  string payment_currency_code = 8;
+  string payment_alt_currency_code = 9;
+  string accounting_cost_code = 10;
+  string accounting_cost = 11;
+  uint32 line_count_numeric = 12;
+  string invoice_period_start_date = 13;
+  string invoice_period_end_date = 73;
+  string discrepancy_response = 14;
+  uint32 order_id = 15;
+  uint32 billing_id = 16;
+  uint32 despatch_id = 17;
+  uint32 receipt_id = 18;
+  uint32 statement_id = 19;
+  uint32 contract_id = 20;
+  uint32 accounting_supplier_party_id = 22;
+  uint32 accounting_customer_party_id = 23;
+  uint32 payee_party_id = 24;
+  uint32 buyer_customer_party_id = 25;
+  uint32 seller_supplier_party_id = 26;
+  uint32 tax_representative_party_id = 27;
+  string tax_ex_source_currency_code = 28;
+  string tax_ex_source_currency_base_rate = 29;
+  string tax_ex_target_currency_code = 30;
+  string tax_ex_target_currency_base_rate = 31;
+  uint32 tax_ex_exchange_market_id = 32;
+  double tax_ex_calculation_rate = 33;
+  string tax_ex_mathematic_operator_code = 34;
+  string tax_ex_date = 35;
+  string pricing_ex_source_currency_code = 36;
+  string pricing_ex_source_currency_base_rate = 37;
+  string pricing_ex_target_currency_code = 38;
+  string pricing_ex_target_currency_base_rate = 39;
+  uint32 pricing_ex_exchange_market_id = 40;
+  double pricing_ex_calculation_rate = 41;
+  string pricing_ex_mathematic_operator_code = 42;
+  string pricing_ex_date = 43;
+  string payment_ex_source_currency_code = 44;
+  string payment_ex_source_currency_base_rate = 45;
+  string payment_ex_target_currency_code = 46;
+  string payment_ex_target_currency_base_rate = 47;
+  uint32 payment_ex_exchange_market_id = 48;
+  double payment_ex_calculation_rate = 49;
+  string payment_ex_mathematic_operator_code = 50;
+  string payment_ex_date = 51;
+  string payment_alt_ex_source_currency_code = 52;
+  string payment_alt_ex_source_currency_base_rate = 53;
+  string payment_alt_ex_target_currency_code = 54;
+  string payment_alt_ex_target_currency_base_rate = 55;
+  uint32 payment_alt_ex_exchange_market_id = 56;
+  double payment_alt_ex_calculation_rate = 57;
+  string payment_alt_ex_mathematic_operator_code = 58;
+  string payment_alt_ex_date = 59;
+  double line_extension_amount = 60;
+  double tax_exclusive_amount = 61;
+  double tax_inclusive_amount = 62;
+  double allowance_total_amount = 63;
+  double charge_total_amount = 64;
+  double withholding_tax_total_amount = 65;
+  double prepaid_amount = 66;
+  double payable_rounding_amount = 67;
+  double payable_amount = 68;
+  double payable_alternative_amount = 69;
+  string user_id = 70;
+  string user_email = 71;
+  string request_id = 72;
+  repeated CreateDebitNoteLineRequest debit_note_lines = 74;
+}
+
+message CreateDebitNoteHeaderResponse {
+  DebitNoteHeader debit_note_header = 1;
+}
+
+message UpdateDebitNoteHeaderRequest {
+  string note = 1;
+  string document_currency_code = 2;
+  string accounting_cost = 3;
+  double charge_total_amount = 4;
+  double prepaid_amount = 5;
+  double payable_rounding_amount = 6;
+  double payable_amount = 7;
+  string id = 8;
+  string user_id = 9;
+  string user_email = 10;
+  string request_id = 11;
+}
+
+message UpdateDebitNoteHeaderResponse {}
+
+message GetDebitNoteHeaderRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message GetDebitNoteHeaderResponse {
+  DebitNoteHeader debit_note_header = 1;
+}
+
+message GetDebitNoteHeaderByPkRequest {
+  common.v1.GetByIdRequest get_by_id_request = 1;
+}
+
+message GetDebitNoteHeaderByPkResponse {
+  DebitNoteHeader debit_note_header = 1;
+}
+
+message GetDebitNoteHeadersRequest {
+  string limit = 1;
+  string next_cursor = 2;
+  string user_email = 3;
+  string request_id = 4;
+}
+
+message GetDebitNoteHeadersResponse {
+  repeated DebitNoteHeader debit_note_headers = 1;
+  string next_cursor = 2;
+}
+
+message DebitNoteLine {
+  DebitNoteLineD debit_note_line_d = 1;
+  DebitNoteLineT debit_note_line_t = 2;
+  common.v1.CrUpdUser cr_upd_user = 3;
+  common.v1.CrUpdTime cr_upd_time = 4;
+}
+
+message DebitNoteLineD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string dnl_id = 4;
+  string note = 5;
+  double debited_quantity = 6;
+  double line_extension_amount = 7;
+  string accounting_cost_code = 8;
+  string accounting_cost = 9;
+  string payment_purpose_code = 10;
+  string discrepancy_response = 11;
+  uint32 despatch_line_id = 12;
+  uint32 receipt_line_id = 13;
+  uint32 billing_id = 14;
+  uint32 item_id = 15;
+  double price_amount = 16;
+  double price_base_quantity = 17;
+  string price_change_reason = 18;
+  string price_type_code = 19;
+  string price_type = 20;
+  double orderable_unit_factor_rate = 21;
+  uint32 price_list_id = 22;
+  uint32 debit_note_header_id = 23;
+}
+
+message DebitNoteLineT {
+  google.protobuf.Timestamp tax_point_date = 1;
+  google.protobuf.Timestamp price_validity_period_start_date = 2;
+  google.protobuf.Timestamp price_validity_period_end_date = 3;
+}
+
+message CreateDebitNoteLineRequest {
+  string dnl_id = 1;
+  string note = 2;
+  double debited_quantity = 3;
+  double line_extension_amount = 4;
+  string tax_point_date = 5;
+  string accounting_cost_code = 6;
+  string accounting_cost = 7;
+  string payment_purpose_code = 8;
+  string discrepancy_response = 9;
+  uint32 despatch_line_id = 10;
+  uint32 receipt_line_id = 11;
+  uint32 billing_id = 12;
+  uint32 item_id = 13;
+  double price_amount = 14;
+  double price_base_quantity = 15;
+  string price_change_reason = 16;
+  string price_type_code = 17;
+  string price_type = 18;
+  double orderable_unit_factor_rate = 19;
+  string price_validity_period_start_date = 20;
+  string price_validity_period_end_date = 21;
+  uint32 price_list_id = 22;
+  uint32 debit_note_header_id = 23;
+  string user_id = 24;
+  string user_email = 25;
+  string request_id = 26;
+}
+
+message CreateDebitNoteLineResponse {
+  DebitNoteLine debit_note_line = 1;
+}
+
+message GetDebitNoteLinesRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message GetDebitNoteLinesResponse {
+  repeated DebitNoteLine debit_note_lines = 1;
+}

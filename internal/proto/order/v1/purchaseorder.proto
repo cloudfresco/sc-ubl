@@ -1,0 +1,303 @@
+syntax = "proto3";
+
+package order.v1;
+
+import "google/protobuf/timestamp.proto";
+import "common/v1/common.proto";
+
+option go_package = "github.com/cloudfresco/sc-ubl/internal/protogen/order/v1";
+
+// The PurchaseOrderService service definition.
+service PurchaseOrderHeaderService {
+  rpc CreatePurchaseOrderHeader(CreatePurchaseOrderHeaderRequest) returns (CreatePurchaseOrderHeaderResponse);
+  rpc GetPurchaseOrderHeaders(GetPurchaseOrderHeadersRequest) returns (GetPurchaseOrderHeadersResponse);
+  rpc GetPurchaseOrderHeader(GetPurchaseOrderHeaderRequest) returns (GetPurchaseOrderHeaderResponse);
+  rpc GetPurchaseOrderHeaderByPk(GetPurchaseOrderHeaderByPkRequest) returns (GetPurchaseOrderHeaderByPkResponse);
+  rpc CreatePurchaseOrderLine(CreatePurchaseOrderLineRequest) returns (CreatePurchaseOrderLineResponse);
+  rpc GetPurchaseOrderLines(GetPurchaseOrderLinesRequest) returns (GetPurchaseOrderLinesResponse);
+  rpc UpdatePurchaseOrderHeader(UpdatePurchaseOrderHeaderRequest) returns (UpdatePurchaseOrderHeaderResponse);
+}
+
+message PurchaseOrderHeader {
+  PurchaseOrderHeaderD purchase_order_header_d = 1;
+  PurchaseOrderHeaderT purchase_order_header_t = 2;
+  common.v1.CrUpdUser cr_upd_user = 3;
+  common.v1.CrUpdTime cr_upd_time = 4;
+}
+
+message PurchaseOrderHeaderD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string poh_id = 4;
+  string sales_order_id = 5;
+  string order_type_code = 6;
+  string note = 7;
+  string requested_invoice_currency_code = 8;
+  string document_currency_code = 9;
+  string pricing_currency_code = 10;
+  string tax_currency_code = 11;
+  string accounting_cost_code = 12;
+  string accounting_cost = 13;
+  uint32 line_count_numeric = 14;
+  uint32 quotation_id = 15;
+  uint32 order_id = 16;
+  uint32 catalogue_id = 17;
+  uint32 buyer_customer_party_id = 18;
+  uint32 seller_supplier_party_id = 19;
+  uint32 originator_customer_party_id = 20;
+  uint32 freight_forwarder_party_id = 21;
+  uint32 accounting_customer_party_id = 22;
+  string transaction_conditions = 23;
+  string tax_ex_source_currency_code = 24;
+  string tax_ex_source_currency_base_rate = 25;
+  string tax_ex_target_currency_code = 26;
+  string tax_ex_target_currency_base_rate = 27;
+  uint32 tax_ex_exchange_market_id = 28;
+  double tax_ex_calculation_rate = 29;
+  string tax_ex_mathematic_operator_code = 30;
+  string pricing_ex_source_currency_code = 31;
+  string pricing_ex_source_currency_base_rate = 32;
+  string pricing_ex_target_currency_code = 33;
+  string pricing_ex_target_currency_base_rate = 34;
+  uint32 pricing_ex_exchange_market_id = 35;
+  double pricing_ex_calculation_rate = 36;
+  string pricing_ex_mathematic_operator_code = 37;
+  string payment_ex_source_currency_code = 38;
+  string payment_ex_source_currency_base_rate = 39;
+  string payment_ex_target_currency_code = 40;
+  string payment_ex_target_currency_base_rate = 41;
+  uint32 payment_ex_exchange_market_id = 42;
+  double payment_ex_calculation_rate = 43;
+  string payment_ex_mathematic_operator_code = 44;
+  string destination_country = 45;
+  double line_extension_amount = 46;
+  double tax_exclusive_amount = 47;
+  double tax_inclusive_amount = 48;
+  double allowance_total_amount = 49;
+  double charge_total_amount = 50;
+  double withholding_tax_total_amount = 51;
+  double prepaid_amount = 52;
+  double payable_rounding_amount = 53;
+  double payable_amount = 54;
+  double payable_alternative_amount = 55;
+}
+
+message PurchaseOrderHeaderT {
+  google.protobuf.Timestamp issue_date = 1;
+  google.protobuf.Timestamp validity_period = 2;
+  google.protobuf.Timestamp tax_ex_date = 3;
+  google.protobuf.Timestamp pricing_ex_date = 4;
+  google.protobuf.Timestamp payment_ex_date = 5;
+}
+
+message CreatePurchaseOrderHeaderRequest {
+  string poh_id = 1;
+  string sales_order_id = 2;
+  string issue_date = 3;
+  string order_type_code = 4;
+  string note = 5;
+  string requested_invoice_currency_code = 6;
+  string document_currency_code = 7;
+  string pricing_currency_code = 8;
+  string tax_currency_code = 9;
+  string accounting_cost_code = 11;
+  string accounting_cost = 12;
+  uint32 line_count_numeric = 13;
+  string validity_period = 14;
+  uint32 quotation_id = 15;
+  uint32 order_id = 16;
+  uint32 catalogue_id = 18;
+  uint32 buyer_customer_party_id = 21;
+  uint32 seller_supplier_party_id = 22;
+  uint32 originator_customer_party_id = 23;
+  uint32 freight_forwarder_party_id = 24;
+  uint32 accounting_customer_party_id = 25;
+  string transaction_conditions = 26;
+  string tax_ex_source_currency_code = 27;
+  string tax_ex_source_currency_base_rate = 28;
+  string tax_ex_target_currency_code = 29;
+  string tax_ex_target_currency_base_rate = 30;
+  uint32 tax_ex_exchange_market_id = 31;
+  double tax_ex_calculation_rate = 32;
+  string tax_ex_mathematic_operator_code = 33;
+  string tax_ex_date = 34;
+  string pricing_ex_source_currency_code = 35;
+  string pricing_ex_source_currency_base_rate = 36;
+  string pricing_ex_target_currency_code = 37;
+  string pricing_ex_target_currency_base_rate = 38;
+  uint32 pricing_ex_exchange_market_id = 39;
+  double pricing_ex_calculation_rate = 40;
+  string pricing_ex_mathematic_operator_code = 41;
+  string pricing_ex_date = 42;
+  string payment_ex_source_currency_code = 43;
+  string payment_ex_source_currency_base_rate = 44;
+  string payment_ex_target_currency_code = 45;
+  string payment_ex_target_currency_base_rate = 46;
+  uint32 payment_ex_exchange_market_id = 47;
+  double payment_ex_calculation_rate = 48;
+  string payment_ex_mathematic_operator_code = 49;
+  string payment_ex_date = 50;
+  string destination_country = 51;
+  double line_extension_amount = 52;
+  double tax_exclusive_amount = 53;
+  double tax_inclusive_amount = 54;
+  double allowance_total_amount = 55;
+  double charge_total_amount = 56;
+  double withholding_tax_total_amount = 57;
+  double prepaid_amount = 58;
+  double payable_rounding_amount = 59;
+  double payable_amount = 60;
+  double payable_alternative_amount = 61;
+  string user_id = 62;
+  string user_email = 63;
+  string request_id = 64;
+  repeated CreatePurchaseOrderLineRequest purchase_order_lines = 65;
+}
+
+message CreatePurchaseOrderHeaderResponse {
+  PurchaseOrderHeader purchase_order_header = 1;
+}
+
+message GetPurchaseOrderHeaderRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message GetPurchaseOrderHeaderResponse {
+  PurchaseOrderHeader purchase_order_header = 1;
+}
+
+message GetPurchaseOrderHeaderByPkRequest {
+  common.v1.GetByIdRequest get_by_id_request = 1;
+}
+
+message GetPurchaseOrderHeaderByPkResponse {
+  PurchaseOrderHeader purchase_order_header = 1;
+}
+
+message GetPurchaseOrderHeadersResponse {
+  repeated PurchaseOrderHeader purchase_order_headers = 1;
+  string next_cursor = 2;
+}
+
+message GetPurchaseOrderHeadersRequest {
+  string limit = 1;
+  string next_cursor = 2;
+  string user_email = 3;
+  string request_id = 4;
+}
+
+message PurchaseOrderLine {
+  PurchaseOrderLineD purchase_order_line_d = 1;
+  PurchaseOrderLineT purchase_order_line_t = 2;
+  common.v1.CrUpdUser cr_upd_user = 3;
+  common.v1.CrUpdTime cr_upd_time = 4;
+}
+
+message PurchaseOrderLineD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string pol_id = 4;
+  string substitution_status_code = 5;
+  string note = 6;
+  string sales_order_id = 7;
+  string line_status_code = 8;
+  double quantity = 9;
+  double line_extension_amount = 10;
+  double total_tax_amount = 11;
+  double minimum_quantity = 12;
+  double maximum_quantity = 13;
+  double minimum_backorder_quantity = 14;
+  double maximum_backorder_quantity = 15;
+  string inspection_method_code = 16;
+  bool partial_delivery_indicator = 17;
+  bool back_order_allowed_indicator = 18;
+  string accounting_cost_code = 19;
+  string accounting_cost = 20;
+  string warranty_information = 21;
+  uint32 originator_party_id = 22;
+  uint32 item_id = 23;
+  double price_amount = 24;
+  double price_base_quantity = 25;
+  string price_change_reason = 26;
+  string price_type_code = 27;
+  string price_type = 28;
+  double orderable_unit_factor_rate = 29;
+  uint32 price_list_id = 30;
+  uint32 purchase_order_header_id = 31;
+}
+
+message PurchaseOrderLineT {
+  google.protobuf.Timestamp price_validity_period_start_date = 1;
+  google.protobuf.Timestamp price_validity_period_end_date = 2;
+}
+
+message CreatePurchaseOrderLineRequest {
+  string pol_id = 1;
+  string substitution_status_code = 2;
+  string note = 3;
+  string sales_order_id = 4;
+  string line_status_code = 5;
+  double quantity = 6;
+  double line_extension_amount = 7;
+  double total_tax_amount = 8;
+  double minimum_quantity = 9;
+  double maximum_quantity = 10;
+  double minimum_backorder_quantity = 11;
+  double maximum_backorder_quantity = 12;
+  string inspection_method_code = 13;
+  bool partial_delivery_indicator = 14;
+  bool back_order_allowed_indicator = 15;
+  string accounting_cost_code = 16;
+  string accounting_cost = 17;
+  string warranty_information = 18;
+  uint32 originator_party_id = 19;
+  uint32 item_id = 20;
+  double price_amount = 21;
+  double price_base_quantity = 22;
+  string price_change_reason = 23;
+  string price_type_code = 24;
+  string price_type = 25;
+  double orderable_unit_factor_rate = 26;
+  string price_validity_period_start_date = 27;
+  string price_validity_period_end_date = 28;
+  uint32 price_list_id = 29;
+  uint32 purchase_order_header_id = 30;
+  string user_id = 31;
+  string user_email = 32;
+  string request_id = 33;
+}
+
+message CreatePurchaseOrderLineResponse {
+  PurchaseOrderLine purchase_order_line = 1;
+}
+
+message GetPurchaseOrderLinesRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message GetPurchaseOrderLinesResponse {
+  repeated PurchaseOrderLine purchase_order_lines = 1;
+}
+
+message PurchaseOrderLines {
+  repeated PurchaseOrderLine purchase_order_lines = 1;
+}
+
+message UpdatePurchaseOrderHeaderRequest {
+  string order_type_code = 1;
+  string note = 2;
+  string requested_invoice_currency_code = 3;
+  string document_currency_code = 4;
+  string pricing_currency_code = 5;
+  string tax_currency_code = 6;
+  string accounting_cost_code = 7;
+  string accounting_cost = 8;
+  string id = 9;
+  string user_id = 10;
+  string user_email = 11;
+  string request_id = 12;
+}
+
+message UpdatePurchaseOrderHeaderResponse {}

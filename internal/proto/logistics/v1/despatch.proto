@@ -1,0 +1,168 @@
+syntax = "proto3";
+
+package logistics.v1;
+
+import "google/protobuf/timestamp.proto";
+import "common/v1/common.proto";
+
+option go_package = "github.com/cloudfresco/sc-ubl/internal/protogen/logistics/v1";
+
+// The DespatchService service definition.
+service DespatchService {
+  rpc CreateDespatchHeader(CreateDespatchHeaderRequest) returns (CreateDespatchHeaderResponse);
+  rpc GetDespatchHeaders(GetDespatchHeadersRequest) returns (GetDespatchHeadersResponse);
+  rpc GetDespatchHeader(GetDespatchHeaderRequest) returns (GetDespatchHeaderResponse);
+  rpc GetDespatchHeaderByPk(GetDespatchHeaderByPkRequest) returns (GetDespatchHeaderByPkResponse);
+  rpc CreateDespatchLine(CreateDespatchLineRequest) returns (CreateDespatchLineResponse);
+  rpc GetDespatchLines(GetDespatchLinesRequest) returns (GetDespatchLinesResponse);
+  rpc UpdateDespatchHeader(UpdateDespatchHeaderRequest) returns (UpdateDespatchHeaderResponse);
+}
+
+message DespatchHeader {
+  DespatchHeaderD despatch_header_d = 1;
+  DespatchHeaderT despatch_header_t = 2;
+  common.v1.CrUpdUser cr_upd_user = 3;
+  common.v1.CrUpdTime cr_upd_time = 4;
+}
+
+message DespatchHeaderD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string desph_id = 4;
+  string document_status_code = 5;
+  string despatch_advice_type_code = 6;
+  string note = 7;
+  uint32 line_count_numeric = 8;
+  uint32 order_id = 9;
+  uint32 despatch_supplier_party_id = 10;
+  uint32 delivery_customer_party_id = 11;
+  uint32 buyer_customer_party_id = 12;
+  uint32 seller_supplier_party_id = 13;
+  uint32 originator_customer_party_id = 14;
+  uint32 shipment_id = 15;
+}
+
+message DespatchHeaderT {
+  google.protobuf.Timestamp issue_date = 1;
+}
+
+message CreateDespatchHeaderRequest {
+  string desph_id = 1;
+  string issue_date = 2;
+  string document_status_code = 3;
+  string despatch_advice_type_code = 4;
+  string note = 5;
+  uint32 line_count_numeric = 6;
+  uint32 order_id = 7;
+  uint32 despatch_supplier_party_id = 8;
+  uint32 delivery_customer_party_id = 9;
+  uint32 buyer_customer_party_id = 10;
+  uint32 seller_supplier_party_id = 11;
+  uint32 originator_customer_party_id = 12;
+  uint32 shipment_id = 13;
+  string user_id = 14;
+  string user_email = 15;
+  string request_id = 16;
+  repeated CreateDespatchLineRequest despatch_lines = 17;
+}
+
+message CreateDespatchHeaderResponse {
+  DespatchHeader despatch_header = 1;
+}
+
+message GetDespatchHeaderRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message GetDespatchHeaderResponse {
+  DespatchHeader despatch_header = 1;
+}
+
+message GetDespatchHeaderByPkRequest {
+  common.v1.GetByIdRequest get_by_id_request = 1;
+}
+
+message GetDespatchHeaderByPkResponse {
+  DespatchHeader despatch_header = 1;
+}
+
+message GetDespatchHeadersRequest {
+  string limit = 1;
+  string next_cursor = 2;
+  string user_email = 3;
+  string request_id = 4;
+}
+
+message GetDespatchHeadersResponse {
+  repeated DespatchHeader despatch_headers = 1;
+  string next_cursor = 2;
+}
+
+message DespatchLine {
+  DespatchLineD despatch_line_d = 1;
+  common.v1.CrUpdUser cr_upd_user = 2;
+  common.v1.CrUpdTime cr_upd_time = 3;
+}
+
+message DespatchLineD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string despl_id = 4;
+  string note = 5;
+  string line_status_code = 6;
+  double delivered_quantity = 7;
+  double backorder_quantity = 8;
+  string backorder_reason = 9;
+  double outstanding_quantity = 10;
+  string outstanding_reason = 11;
+  double oversupply_quantity = 12;
+  uint32 order_line_id = 13;
+  uint32 item_id = 14;
+  uint32 shipment_id = 15;
+  uint32 despatch_header_id = 16;
+}
+
+message CreateDespatchLineRequest {
+  string despl_id = 1;
+  string note = 2;
+  string line_status_code = 3;
+  double delivered_quantity = 4;
+  double backorder_quantity = 5;
+  string backorder_reason = 6;
+  double outstanding_quantity = 7;
+  string outstanding_reason = 8;
+  double oversupply_quantity = 9;
+  uint32 order_line_id = 10;
+  uint32 item_id = 11;
+  uint32 shipment_id = 12;
+  uint32 despatch_header_id = 13;
+  string user_id = 14;
+  string user_email = 15;
+  string request_id = 16;
+}
+
+message CreateDespatchLineResponse {
+  DespatchLine despatch_line = 1;
+}
+
+message GetDespatchLinesRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message GetDespatchLinesResponse {
+  repeated DespatchLine despatch_lines = 1;
+}
+
+message UpdateDespatchHeaderRequest {
+  string document_status_code = 1;
+  string despatch_advice_type_code = 2;
+  string note = 3;
+  string id = 4;
+  string user_id = 5;
+  string user_email = 6;
+  string request_id = 7;
+}
+
+message UpdateDespatchHeaderResponse {}

@@ -1,0 +1,35 @@
+{
+  "rate_limit": {
+		"u_max_rate": "1500",
+		"u_max_burst": "1500",
+		"user_max_rate": "1500",
+		"user_max_burst": "1500",
+		"party_max_rate": "300",
+		"party_max_burst": "300",
+		"purchase_max_rate": "300",
+		"purchase_max_burst": "300",
+		"credit_max_rate": "300",
+		"credit_max_burst": "300",
+		"debit_max_rate": "300",
+		"debit_max_burst": "300",	
+		"invoice_max_rate": "400",
+		"invoice_max_burst": "400",
+		"search_max_rate": "20",
+		"search_max_burst": "20",
+		"financial_institution_max_rate": "20",
+		"financial_institution_max_burst": "20",
+		"tax_max_rate": "20",
+		"tax_max_burst": "20",
+		"item_max_rate": "20",
+		"item_max_burst": "20",
+		"shipment_max_rate": "100",
+		"shipment_max_burst": "100",
+		"payment_max_rate": "20",
+		"payment_max_burst": "20"
+  },
+  "limit_sql_rows": "21",
+  "user_options": {
+		"confirm_token_duration": "296h",
+		"reset_token_duration": "296h"
+   }
+}

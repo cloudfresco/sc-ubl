@@ -1,0 +1,322 @@
+syntax = "proto3";
+
+package invoice.v1;
+
+import "google/protobuf/timestamp.proto";
+import "common/v1/common.proto";
+
+option go_package = "github.com/cloudfresco/sc-ubl/internal/protogen/invoice/v1";
+
+// The InvoiceService service definition.
+service InvoiceService {
+  rpc CreateInvoice(CreateInvoiceRequest) returns (CreateInvoiceResponse);
+  rpc GetInvoices(GetInvoicesRequest) returns (GetInvoicesResponse);
+  rpc GetInvoice(GetInvoiceRequest) returns (GetInvoiceResponse);
+  rpc GetInvoiceByPk(GetInvoiceByPkRequest) returns (GetInvoiceByPkResponse);
+  rpc CreateInvoiceLine(CreateInvoiceLineRequest) returns (CreateInvoiceLineResponse);
+  rpc GetInvoiceLines(GetInvoiceLinesRequest) returns (GetInvoiceLinesResponse);
+  rpc UpdateInvoice(UpdateInvoiceRequest) returns (UpdateInvoiceResponse);
+}
+
+message InvoiceHeader {
+  InvoiceHeaderD invoice_header_d = 1;
+  InvoiceHeaderT invoice_header_t = 2;
+  common.v1.CrUpdUser cr_upd_user = 3;
+  common.v1.CrUpdTime cr_upd_time = 4;
+}
+
+message InvoiceHeaderD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string ih_id = 4;
+  string invoice_type_code = 5;
+  string note = 6;
+  string document_currency_code = 7;
+  string tax_currency_code = 8;
+  string pricing_currency_code = 9;
+  string payment_currency_code = 10;
+  string payment_alt_currency_code = 11;
+  string accounting_cost_code = 12;
+  string accounting_cost = 13;
+  uint32 line_count_numeric = 14;
+  uint32 order_id = 15;
+  uint32 billing_id = 16;
+  uint32 despatch_id = 17;
+  uint32 receipt_id = 18;
+  uint32 statement_id = 19;
+  uint32 contract_id = 20;
+  uint32 accounting_supplier_party_id = 21;
+  uint32 accounting_customer_party_id = 22;
+  uint32 payee_party_id = 23;
+  uint32 buyer_customer_party_id = 24;
+  uint32 seller_supplier_party_id = 25;
+  uint32 tax_representative_party_id = 26;
+  string tax_ex_source_currency_code = 27;
+  string tax_ex_source_currency_base_rate = 28;
+  string tax_ex_target_currency_code = 29;
+  string tax_ex_target_currency_base_rate = 30;
+  uint32 tax_ex_exchange_market_id = 31;
+  double tax_ex_calculation_rate = 32;
+  string tax_ex_mathematic_operator_code = 33;
+  string pricing_ex_source_currency_code = 34;
+  string pricing_ex_source_currency_base_rate = 35;
+  string pricing_ex_target_currency_code = 36;
+  string pricing_ex_target_currency_base_rate = 37;
+  uint32 pricing_ex_exchange_market_id = 38;
+  double pricing_ex_calculation_rate = 39;
+  string pricing_ex_mathematic_operator_code = 40;
+  string payment_ex_source_currency_code = 41;
+  string payment_ex_source_currency_base_rate = 42;
+  string payment_ex_target_currency_code = 43;
+  string payment_ex_target_currency_base_rate = 44;
+  uint32 payment_ex_exchange_market_id = 45;
+  double payment_ex_calculation_rate = 46;
+  string payment_ex_mathematic_operator_code = 47;
+  string payment_alt_ex_source_currency_code = 48;
+  string payment_alt_ex_source_currency_base_rate = 49;
+  string payment_alt_ex_target_currency_code = 50;
+  string payment_alt_ex_target_currency_base_rate = 51;
+  uint32 payment_alt_ex_exchange_market_id = 52;
+  double payment_alt_ex_calculation_rate = 53;
+  string payment_alt_ex_mathematic_operator_code = 54;
+  double line_extension_amount = 55;
+  double tax_exclusive_amount = 56;
+  double tax_inclusive_amount = 57;
+  double allowance_total_amount = 58;
+  double charge_total_amount = 59;
+  double withholding_tax_total_amount = 60;
+  double prepaid_amount = 61;
+  double payable_rounding_amount = 62;
+  double payable_amount = 63;
+  double payable_alternative_amount = 64;
+}
+
+message InvoiceHeaderT {
+  google.protobuf.Timestamp issue_date = 1;
+  google.protobuf.Timestamp due_date = 2;
+  google.protobuf.Timestamp tax_point_date = 3;
+  google.protobuf.Timestamp invoice_period_start_date = 4;
+  google.protobuf.Timestamp invoice_period_end_date = 5;
+  google.protobuf.Timestamp tax_ex_date = 6;
+  google.protobuf.Timestamp pricing_ex_date = 7;
+  google.protobuf.Timestamp payment_ex_date = 8;
+  google.protobuf.Timestamp payment_alt_ex_date = 9;
+}
+
+message CreateInvoiceRequest {
+  string ih_id = 1;
+  string issue_date = 2;
+  string due_date = 3;
+  string tax_point_date = 4;
+  string invoice_period_start_date = 5;
+  string invoice_period_end_date = 6;
+  string invoice_type_code = 7;
+  string note = 8;
+  string document_currency_code = 9;
+  string tax_currency_code = 10;
+  string pricing_currency_code = 11;
+  string payment_currency_code = 12;
+  string payment_alt_currency_code = 13;
+  string accounting_cost_code = 14;
+  string accounting_cost = 15;
+  uint32 line_count_numeric = 16;
+  uint32 order_id = 18;
+  uint32 billing_id = 19;
+  uint32 despatch_id = 20;
+  uint32 receipt_id = 21;
+  uint32 statement_id = 22;
+  uint32 contract_id = 24;
+  uint32 accounting_supplier_party_id = 27;
+  uint32 accounting_customer_party_id = 28;
+  uint32 payee_party_id = 29;
+  uint32 buyer_customer_party_id = 30;
+  uint32 seller_supplier_party_id = 31;
+  uint32 tax_representative_party_id = 32;
+  string tax_ex_source_currency_code = 33;
+  string tax_ex_source_currency_base_rate = 34;
+  string tax_ex_target_currency_code = 35;
+  string tax_ex_target_currency_base_rate = 36;
+  uint32 tax_ex_exchange_market_id = 37;
+  double tax_ex_calculation_rate = 38;
+  string tax_ex_mathematic_operator_code = 39;
+  string tax_ex_date = 40;
+  string pricing_ex_source_currency_code = 41;
+  string pricing_ex_source_currency_base_rate = 42;
+  string pricing_ex_target_currency_code = 43;
+  string pricing_ex_target_currency_base_rate = 44;
+  uint32 pricing_ex_exchange_market_id = 45;
+  double pricing_ex_calculation_rate = 46;
+  string pricing_ex_mathematic_operator_code = 47;
+  string pricing_ex_date = 48;
+  string payment_ex_source_currency_code = 49;
+  string payment_ex_source_currency_base_rate = 50;
+  string payment_ex_target_currency_code = 51;
+  string payment_ex_target_currency_base_rate = 52;
+  uint32 payment_ex_exchange_market_id = 53;
+  double payment_ex_calculation_rate = 54;
+  string payment_ex_mathematic_operator_code = 55;
+  string payment_ex_date = 56;
+  string payment_alt_ex_source_currency_code = 57;
+  string payment_alt_ex_source_currency_base_rate = 58;
+  string payment_alt_ex_target_currency_code = 59;
+  string payment_alt_ex_target_currency_base_rate = 60;
+  uint32 payment_alt_ex_exchange_market_id = 61;
+  double payment_alt_ex_calculation_rate = 62;
+  string payment_alt_ex_mathematic_operator_code = 63;
+  string payment_alt_ex_date = 64;
+  double line_extension_amount = 65;
+  double tax_exclusive_amount = 66;
+  double tax_inclusive_amount = 67;
+  double allowance_total_amount = 68;
+  double charge_total_amount = 69;
+  double withholding_tax_total_amount = 70;
+  double prepaid_amount = 71;
+  double payable_rounding_amount = 72;
+  double payable_amount = 73;
+  double payable_alternative_amount = 74;
+  string user_id = 75;
+  string user_email = 76;
+  string request_id = 77;
+  repeated CreateInvoiceLineRequest invoice_lines = 78;
+}
+
+message CreateInvoiceResponse {
+  InvoiceHeader invoice_header = 1;
+}
+
+message UpdateInvoiceRequest {
+  string note = 1;
+  string invoice_type_code = 2;
+  string accounting_cost = 3;
+  double charge_total_amount = 4;
+  double prepaid_amount = 5;
+  double payable_rounding_amount = 6;
+  double payable_amount = 7;
+  string id = 8;
+  string user_id = 9;
+  string user_email = 10;
+  string request_id = 11;
+}
+
+message UpdateInvoiceResponse {}
+
+message GetInvoiceRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message GetInvoiceResponse {
+  InvoiceHeader invoice_header = 1;
+}
+
+message GetInvoiceByPkRequest {
+  common.v1.GetByIdRequest get_by_id_request = 1;
+}
+
+message GetInvoiceByPkResponse {
+  InvoiceHeader invoice_header = 1;
+}
+
+message GetInvoicesRequest {
+  string limit = 1;
+  string next_cursor = 2;
+  string user_email = 3;
+  string request_id = 4;
+}
+
+message GetInvoicesResponse {
+  repeated InvoiceHeader invoice_headers = 1;
+  string next_cursor = 2;
+}
+
+message InvoiceLine {
+  InvoiceLineD invoice_line_d = 1;
+  InvoiceLineT invoice_line_t = 2;
+  common.v1.CrUpdUser cr_upd_user = 3;
+  common.v1.CrUpdTime cr_upd_time = 4;
+}
+
+message InvoiceLineD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string il_id = 4;
+  string note = 5;
+  double invoiced_quantity = 6;
+  double line_extension_amount = 7;
+  string accounting_cost_code = 8;
+  string accounting_cost = 9;
+  string payment_purpose_code = 10;
+  bool free_of_charge_indicator = 11;
+  uint32 order_line_id = 12;
+  uint32 despatch_line_id = 13;
+  uint32 receipt_line_id = 14;
+  uint32 billing_id = 15;
+  uint32 originator_party_id = 16;
+  uint32 item_id = 17;
+  double price_amount = 18;
+  double price_base_quantity = 19;
+  string price_change_reason = 20;
+  string price_type_code = 21;
+  string price_type = 22;
+  double orderable_unit_factor_rate = 23;
+  uint32 price_list_id = 24;
+  uint32 invoice_header_id = 25;
+}
+
+message InvoiceLineT {
+  google.protobuf.Timestamp tax_point_date = 1;
+  google.protobuf.Timestamp invoice_period_start_date = 2;
+  google.protobuf.Timestamp invoice_period_end_date = 3;
+  google.protobuf.Timestamp price_validity_period_start_date = 4;
+  google.protobuf.Timestamp price_validity_period_end_date = 5;
+}
+
+message CreateInvoiceLineRequest {
+  string il_id = 1;
+  string note = 2;
+  double invoiced_quantity = 3;
+  double line_extension_amount = 4;
+  string tax_point_date = 5;
+  string accounting_cost_code = 6;
+  string accounting_cost = 7;
+  string payment_purpose_code = 8;
+  bool free_of_charge_indicator = 9;
+  string invoice_period_start_date = 10;
+  string invoice_period_end_date = 30;
+  uint32 order_line_id = 11;
+  uint32 despatch_line_id = 12;
+  uint32 receipt_line_id = 13;
+  uint32 billing_id = 14;
+  uint32 originator_party_id = 15;
+  uint32 item_id = 16;
+  double price_amount = 17;
+  double price_base_quantity = 18;
+  string price_change_reason = 19;
+  string price_type_code = 20;
+  string price_type = 21;
+  double orderable_unit_factor_rate = 22;
+  string price_validity_period_start_date = 23;
+  string price_validity_period_end_date = 24;
+  uint32 price_list_id = 25;
+  uint32 invoice_header_id = 26;
+  string user_id = 27;
+  string user_email = 28;
+  string request_id = 29;
+}
+
+message CreateInvoiceLineResponse {
+  InvoiceLine invoice_line = 1;
+}
+
+message GetInvoiceLinesRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message GetInvoiceLinesResponse {
+  repeated InvoiceLine invoice_lines = 1;
+}
+
+message InvoiceLines {
+  repeated InvoiceLine invoice_lines = 1;
+}

@@ -1,0 +1,269 @@
+syntax = "proto3";
+
+package payment.v1;
+
+import "google/protobuf/timestamp.proto";
+import "common/v1/common.proto";
+
+option go_package = "github.com/cloudfresco/sc-ubl/internal/protogen/payment/v1";
+
+// The PaymentService service definition.
+service PaymentService {
+  rpc CreatePayment(CreatePaymentRequest) returns (CreatePaymentResponse);
+  rpc CreatePaymentTerm(CreatePaymentTermRequest) returns (CreatePaymentTermResponse);
+  rpc CreatePaymentMean(CreatePaymentMeanRequest) returns (CreatePaymentMeanResponse);
+  rpc CreatePaymentMandate(CreatePaymentMandateRequest) returns (CreatePaymentMandateResponse);
+  rpc CreatePaymentMandateClause(CreatePaymentMandateClauseRequest) returns (CreatePaymentMandateClauseResponse);
+  rpc CreatePaymentMandateClauseContent(CreatePaymentMandateClauseContentRequest) returns (CreatePaymentMandateClauseContentResponse);
+}
+
+message Payment {
+  PaymentD payment_d = 1;
+  PaymentT payment_t = 2;
+  common.v1.CrUpdUser cr_upd_user = 3;
+  common.v1.CrUpdTime cr_upd_time = 4;
+}
+
+message PaymentD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string p_id = 4;
+  double paid_amount = 5;
+  string instruction_id = 6;
+  uint32 payment_mean_id = 7;
+}
+
+message PaymentT {
+  google.protobuf.Timestamp received_date = 1;
+  google.protobuf.Timestamp paid_date = 2;
+}
+
+message CreatePaymentRequest {
+  string p_id = 1;
+  double paid_amount = 2;
+  string received_date = 3;
+  string paid_date = 4;
+  string instruction_id = 5;
+  uint32 payment_mean_id = 6;
+  string user_id = 7;
+  string user_email = 8;
+  string request_id = 9;
+}
+
+message CreatePaymentResponse {
+  Payment payment = 1;
+}
+
+message PaymentTerm {
+  PaymentTermD payment_term_d = 1;
+  PaymentTermT payment_term_t = 2;
+  common.v1.CrUpdUser cr_upd_user = 3;
+  common.v1.CrUpdTime cr_upd_time = 4;
+  repeated PaymentMean payment_means = 5;
+  repeated Payment payments = 6;
+}
+
+message PaymentTermD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string pt_id = 4;
+  string prepaid_payment_reference_id = 5;
+  string note = 6;
+  string reference_event_code = 7;
+  float settlement_discount_percent = 8;
+  float penalty_surcharge_percent = 9;
+  float payment_percent = 10;
+  double amount = 11;
+  double settlement_discount_amount = 12;
+  double penalty_amount = 13;
+  string payment_terms_details_u_r_i = 14;
+  double exchange_rate = 15;
+}
+
+message PaymentTermT {
+  google.protobuf.Timestamp payment_due_date = 1;
+  google.protobuf.Timestamp installment_due_date = 2;
+  google.protobuf.Timestamp settlement_period_start_date = 3;
+  google.protobuf.Timestamp settlement_period_end_date = 4;
+  google.protobuf.Timestamp penalty_period_start_date = 5;
+  google.protobuf.Timestamp penalty_period_end_date = 6;
+  google.protobuf.Timestamp validity_period_start_date = 7;
+  google.protobuf.Timestamp validity_period_end_date = 8;
+}
+
+message CreatePaymentTermRequest {
+  string pt_id = 1;
+  string prepaid_payment_reference_id = 2;
+  string note = 3;
+  string reference_event_code = 4;
+  float settlement_discount_percent = 5;
+  float penalty_surcharge_percent = 6;
+  float payment_percent = 7;
+  double amount = 8;
+  double settlement_discount_amount = 9;
+  double penalty_amount = 10;
+  string payment_terms_details_u_r_i = 11;
+  string payment_due_date = 12;
+  string installment_due_date = 13;
+  string settlement_period_start_date = 14;
+  string settlement_period_end_date = 15;
+  string penalty_period_start_date = 16;
+  string penalty_period_end_date = 17;
+  double exchange_rate = 18;
+  string validity_period_start_date = 19;
+  string validity_period_end_date = 20;
+  string user_id = 21;
+  string user_email = 22;
+  string request_id = 23;
+}
+
+message CreatePaymentTermResponse {
+  PaymentTerm payment_term = 1;
+}
+
+message PaymentMean {
+  PaymentMeanD payment_mean_d = 1;
+  PaymentMeanT payment_mean_t = 2;
+  common.v1.CrUpdUser cr_upd_user = 3;
+  common.v1.CrUpdTime cr_upd_time = 4;
+  repeated Payment payments = 5;
+}
+
+message PaymentMeanD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string pm_id = 4;
+  string payment_means_code = 5;
+  string payment_channel_code = 6;
+  string instruction_id = 7;
+  string instruction_note = 8;
+  uint32 credit_account_id = 9;
+  uint32 payment_term_id = 10;
+  uint32 payment_mandate_id = 11;
+  uint32 trade_financing_id = 12;
+  uint32 payer_financial_account_id = 13;
+  uint32 payee_financial_account_id = 14;
+}
+
+message PaymentMeanT {
+  google.protobuf.Timestamp payment_due_date = 1;
+}
+
+message CreatePaymentMeanRequest {
+  string pm_id = 1;
+  string payment_means_code = 2;
+  string payment_due_date = 3;
+  string payment_channel_code = 4;
+  string instruction_id = 5;
+  string instruction_note = 6;
+  uint32 credit_account_id = 7;
+  uint32 payment_term_id = 8;
+  uint32 payment_mandate_id = 9;
+  uint32 trade_financing_id = 10;
+  uint32 payer_financial_account_id = 11;
+  uint32 payee_financial_account_id = 12;
+  string user_id = 13;
+  string user_email = 14;
+  string request_id = 15;
+}
+
+message CreatePaymentMeanResponse {
+  PaymentMean payment_mean = 1;
+}
+
+message PaymentMandate {
+  PaymentMandateD payment_mandate_d = 1;
+  PaymentMandateT payment_mandate_t = 2;
+  common.v1.CrUpdUser cr_upd_user = 3;
+  common.v1.CrUpdTime cr_upd_time = 4;
+  repeated PaymentMandateClause payment_mandate_clauses = 5;
+}
+
+message PaymentMandateD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string pmd_id = 4;
+  string mandate_type_code = 5;
+  uint64 maximum_payment_instructions_numeric = 6;
+  double maximum_paid_amount = 7;
+  string signature_id = 8;
+  uint32 payer_party_id = 9;
+  uint32 payer_financial_account_id = 10;
+  string clause = 11;
+}
+
+message PaymentMandateT {
+  google.protobuf.Timestamp validity_period_start_date = 1;
+  google.protobuf.Timestamp validity_period_end_date = 2;
+  google.protobuf.Timestamp payment_reversal_period_start_date = 3;
+  google.protobuf.Timestamp payment_reversal_period_end_date = 4;
+}
+
+message CreatePaymentMandateRequest {
+  string pmd_id = 1;
+  string mandate_type_code = 2;
+  uint64 maximum_payment_instructions_numeric = 3;
+  double maximum_paid_amount = 4;
+  string signature_id = 5;
+  uint32 payer_party_id = 6;
+  uint32 payer_financial_account_id = 7;
+  string validity_period_start_date = 8;
+  string validity_period_end_date = 9;
+  string payment_reversal_period_start_date = 10;
+  string payment_reversal_period_end_date = 11;
+  string clause = 12;
+  string user_id = 13;
+  string user_email = 14;
+  string request_id = 15;
+}
+
+message CreatePaymentMandateResponse {
+  PaymentMandate payment_mandate = 1;
+}
+
+message PaymentMandateClause {
+  uint32 id = 1;
+  string pm_cl_id = 2;
+  uint32 payment_mandate_id = 3;
+  repeated PaymentMandateClauseContent payment_mandate_clause_contents = 4;
+}
+
+message CreatePaymentMandateClauseRequest {
+  string pm_cl_id = 1;
+  uint32 payment_mandate_id = 2;
+  string user_id = 3;
+  string user_email = 4;
+  string request_id = 5;
+}
+
+message CreatePaymentMandateClauseResponse {
+  PaymentMandateClause payment_mandate_clause = 1;
+}
+
+message PaymentMandateClauseContent {
+  PaymentMandateClauseContentD payment_mandate_clause_content_d = 1;
+  common.v1.CrUpdUser cr_upd_user = 2;
+  common.v1.CrUpdTime cr_upd_time = 3;
+}
+
+message PaymentMandateClauseContentD {
+  uint32 id = 1;
+  string content = 2;
+  uint32 payment_mandate_clause_id = 3;
+}
+
+message CreatePaymentMandateClauseContentRequest {
+  string content = 1;
+  uint32 payment_mandate_clause_id = 2;
+  string user_id = 3;
+  string user_email = 4;
+  string request_id = 5;
+}
+
+message CreatePaymentMandateClauseContentResponse {
+  PaymentMandateClauseContent payment_mandate_clause_content = 1;
+}

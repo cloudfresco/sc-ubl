@@ -1,0 +1,138 @@
+INSERT INTO `credit_note_lines`
+	  (uuid4,
+    note,
+    credited_quantity,
+    line_extension_amount,
+    tax_point_date,
+    accounting_cost,
+    item_id,
+    credit_note_header_id,
+    invoice_period_start_date,
+    invoice_period_end_date,
+    price_validity_period_start_date,
+    price_validity_period_end_date,
+    status_code,
+    created_at,
+    updated_at,
+    created_by_user_id,
+    updated_by_user_id) VALUES (UNHEX(REPLACE('f66e7988-20bd-443f-8327-f4ead10f1b4b','-','')),'as agreed on phone, the invoice should have been cancelled earlier, apologies',100,100,'2005-06-21 10:04:26','',1,1,'2005-06-12 10:04:26','2005-06-13 10:04:26','2005-06-18 10:04:26','2005-06-19 10:04:26','active','2019-07-23 10:04:26','2019-07-23 10:04:26','auth0|673c75d516e8adb9e6ffc892','auth0|673c75d516e8adb9e6ffc892');
+
+INSERT INTO `credit_note_lines`
+	  (uuid4,
+    note,
+    credited_quantity,
+    line_extension_amount,
+    tax_point_date,
+    accounting_cost,
+    item_id,
+    credit_note_header_id,
+    invoice_period_start_date,
+    invoice_period_end_date,
+    price_validity_period_start_date,
+    price_validity_period_end_date,
+    status_code,
+    created_at,
+    updated_at,
+    created_by_user_id,
+    updated_by_user_id) VALUES     
+(UNHEX(REPLACE('68c01d21-ad56-47f6-a9d9-6ad1bebdfb1c','-','')),'Scratch on box',1,1273,'2019-07-23 10:04:26','BookingCode001',2,2,'2009-11-02 10:04:26','2009-11-03 10:04:26','2009-11-08 10:04:26','2009-11-09 10:04:26','active','2019-07-23 10:04:26','2019-07-23 10:04:26','auth0|673c75d516e8adb9e6ffc892','auth0|673c75d516e8adb9e6ffc892');
+
+INSERT INTO `credit_note_lines`
+	  (uuid4,
+    note,
+    credited_quantity,
+    line_extension_amount,
+    tax_point_date,
+    accounting_cost,
+    item_id,
+    credit_note_header_id,
+    invoice_period_start_date,
+    invoice_period_end_date,
+    price_validity_period_start_date,
+    price_validity_period_end_date,
+    status_code,
+    created_at,
+    updated_at,
+    created_by_user_id,
+    updated_by_user_id) VALUES 
+(UNHEX(REPLACE('5693b530-2a83-4374-bff6-3bf7388d9b02','-','')),'Cover is slightly damaged',1,3.96,'2019-07-23 10:04:26','',3,2,'2009-11-02 10:04:26','2009-11-03 10:04:26','2009-11-08 10:04:26','2009-11-09 10:04:26','active','2019-07-23 10:04:26','2019-07-23 10:04:26','auth0|673c75d516e8adb9e6ffc892','auth0|673c75d516e8adb9e6ffc892');
+
+INSERT INTO `credit_note_lines`
+	  (uuid4,
+    note,
+    credited_quantity,
+    line_extension_amount,
+    tax_point_date,
+    accounting_cost,
+    item_id,
+    credit_note_header_id,
+    invoice_period_start_date,
+    invoice_period_end_date,
+    price_validity_period_start_date,
+    price_validity_period_end_date,
+    status_code,
+    created_at,
+    updated_at,
+    created_by_user_id,
+    updated_by_user_id) VALUES 
+(UNHEX(REPLACE('aab9fb7a-430d-42d8-8a47-86c767c846f9','-','')),'',2,4.96,'2019-07-23 10:04:26','',4,2,'2009-11-02 10:04:26','2009-11-03 10:04:26','2009-11-08 10:04:26','2009-11-09 10:04:26','active','2019-07-23 10:04:26','2019-07-23 10:04:26','auth0|673c75d516e8adb9e6ffc892','auth0|673c75d516e8adb9e6ffc892');
+
+INSERT INTO `credit_note_lines`
+	  (uuid4,
+    note,
+    credited_quantity,
+    line_extension_amount,
+    tax_point_date,
+    accounting_cost,
+    item_id,
+    credit_note_header_id,
+    invoice_period_start_date,
+    invoice_period_end_date,
+    price_validity_period_start_date,
+    price_validity_period_end_date,
+    status_code,
+    created_at,
+    updated_at,
+    created_by_user_id,
+    updated_by_user_id) VALUES 
+(UNHEX(REPLACE('c298caaa-f2b1-410b-8b07-6bf718f12563','-','')),'',1,25,'2019-07-23 10:04:26','',5,2,'2009-11-02 10:04:26','2009-11-03 10:04:26','2009-11-08 10:04:26','2009-11-09 10:04:26','active','2019-07-23 10:04:26','2019-07-23 10:04:26','auth0|673c75d516e8adb9e6ffc892','auth0|673c75d516e8adb9e6ffc892');
+
+INSERT INTO `credit_note_lines`
+	  (uuid4,
+    note,
+    credited_quantity,
+    line_extension_amount,
+    tax_point_date,
+    accounting_cost,
+    item_id,
+    credit_note_header_id,
+    invoice_period_start_date,
+    invoice_period_end_date,
+    price_validity_period_start_date,
+    price_validity_period_end_date,
+    status_code,
+    created_at,
+    updated_at,
+    created_by_user_id,
+    updated_by_user_id) VALUES 
+(UNHEX(REPLACE('5a6c0d8e-8e0f-4f82-96f6-8bcc7df5c659','-','')),'',250,187.5,'2019-07-23 10:04:26','',6,2,'2009-11-02 10:04:26','2009-11-03 10:04:26','2009-11-08 10:04:26','2009-11-09 10:04:26','active','2019-07-23 10:04:26','2019-07-23 10:04:26','auth0|673c75d516e8adb9e6ffc892','auth0|673c75d516e8adb9e6ffc892');
+
+INSERT INTO `credit_note_lines`
+	  (uuid4,
+    note,
+    credited_quantity,
+    line_extension_amount,
+    tax_point_date,
+    accounting_cost,
+    item_id,
+    credit_note_header_id,
+    invoice_period_start_date,
+    invoice_period_end_date,
+    price_validity_period_start_date,
+    price_validity_period_end_date,
+    status_code,
+    created_at,
+    updated_at,
+    created_by_user_id,
+    updated_by_user_id) VALUES 
+(UNHEX(REPLACE('376bb726-f540-4f50-9f83-b41c1395db3a','-','')),'',2,20,'2019-07-23 10:04:26','',7,3,'2011-06-01 10:04:26','2011-06-02 10:04:26','2011-06-07 10:04:26','2011-06-08 10:04:26','active','2019-07-23 10:04:26','2019-07-23 10:04:26','auth0|673c75d516e8adb9e6ffc892','auth0|673c75d516e8adb9e6ffc892');

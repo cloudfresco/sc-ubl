@@ -1,0 +1,36 @@
+INSERT INTO `purchase_order_headers`
+	  (uuid4,
+    issue_date,
+    validity_period,
+    buyer_customer_party_id,
+    seller_supplier_party_id,
+    originator_customer_party_id,
+    line_extension_amount,
+    payable_amount,
+    tax_ex_date,
+    pricing_ex_date,
+    payment_ex_date,
+    status_code,
+    created_at,
+    updated_at,
+    created_by_user_id,
+    updated_by_user_id) VALUES (UNHEX(REPLACE('413a40b5-5f7b-40c5-bbaf-d6e025543fde','-','')),'2005-06-20 10:04:26','2005-06-21 10:04:26',2,1,2,100,100,'2010-12-02 10:04:26','2010-12-03 10:04:26','2010-12-04 10:04:26','active','2019-07-23 10:04:26','2019-07-23 10:04:26','auth0|673c75d516e8adb9e6ffc892','auth0|673c75d516e8adb9e6ffc892');
+    
+INSERT INTO `purchase_order_headers`
+	  (uuid4,
+    issue_date,
+    validity_period,
+    buyer_customer_party_id,
+    seller_supplier_party_id,
+    originator_customer_party_id,
+    line_extension_amount,
+    payable_amount,
+    tax_ex_date,
+    pricing_ex_date,
+    payment_ex_date,
+    status_code,
+    created_at,
+    updated_at,
+    created_by_user_id,
+    updated_by_user_id) VALUES
+    (UNHEX(REPLACE('8bf4b3d4-95ff-4893-ac0c-838c5a1b1959','-','')),'2010-01-20 10:04:26','2010-01-21 10:04:26',2,1,2,6225,6225,'2010-12-02 10:04:26','2010-12-03 10:04:26','2010-12-04 10:04:26','active','2019-07-23 10:04:26','2019-07-23 10:04:26','auth0|673c75d516e8adb9e6ffc892','auth0|673c75d516e8adb9e6ffc892');

@@ -1,0 +1,323 @@
+syntax = "proto3";
+
+package invoice.v1;
+
+import "google/protobuf/timestamp.proto";
+import "common/v1/common.proto";
+
+option go_package = "github.com/cloudfresco/sc-ubl/internal/protogen/invoice/v1";
+
+// The CreditNoteHeaderService service definition.
+service CreditNoteHeaderService {
+  rpc CreateCreditNoteHeader(CreateCreditNoteHeaderRequest) returns (CreateCreditNoteHeaderResponse);
+  rpc GetCreditNoteHeaders(GetCreditNoteHeadersRequest) returns (GetCreditNoteHeadersResponse);
+  rpc GetCreditNoteHeader(GetCreditNoteHeaderRequest) returns (GetCreditNoteHeaderResponse);
+  rpc GetCreditNoteHeaderByPk(GetCreditNoteHeaderByPkRequest) returns (GetCreditNoteHeaderByPkResponse);
+  rpc CreateCreditNoteLine(CreateCreditNoteLineRequest) returns (CreateCreditNoteLineResponse);
+  rpc GetCreditNoteLines(GetCreditNoteLinesRequest) returns (GetCreditNoteLinesResponse);
+  rpc UpdateCreditNoteHeader(UpdateCreditNoteHeaderRequest) returns (UpdateCreditNoteHeaderResponse);
+}
+
+message CreditNoteHeader {
+  CreditNoteHeaderD credit_note_header_d = 1;
+  CreditNoteHeaderT credit_note_header_t = 2;
+  common.v1.CrUpdUser cr_upd_user = 3;
+  common.v1.CrUpdTime cr_upd_time = 4;
+}
+
+message CreditNoteHeaderD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string cnh_id = 4;
+  string credit_note_type_code = 5;
+  string note = 6;
+  string document_currency_code = 7;
+  string tax_currency_code = 8;
+  string pricing_currency_code = 9;
+  string payment_currency_code = 10;
+  string payment_alt_currency_code = 11;
+  string accounting_cost_code = 12;
+  string accounting_cost = 13;
+  uint32 line_count_numeric = 14;
+  string discrepancy_response = 15;
+  uint32 order_id = 16;
+  uint32 billing_id = 17;
+  uint32 despatch_id = 18;
+  uint32 receipt_id = 19;
+  uint32 contract_id = 20;
+  uint32 statement_id = 21;
+  string signature = 22;
+  uint32 accounting_supplier_party_id = 23;
+  uint32 accounting_customer_party_id = 24;
+  uint32 payee_party_id = 25;
+  uint32 buyer_customer_party_id = 26;
+  uint32 seller_supplier_party_id = 27;
+  uint32 tax_representative_party_id = 28;
+  string tax_ex_source_currency_code = 29;
+  string tax_ex_source_currency_base_rate = 30;
+  string tax_ex_target_currency_code = 31;
+  string tax_ex_target_currency_base_rate = 32;
+  uint32 tax_ex_exchange_market_id = 33;
+  double tax_ex_calculation_rate = 34;
+  string tax_ex_mathematic_operator_code = 35;
+  string pricing_ex_source_currency_code = 36;
+  string pricing_ex_source_currency_base_rate = 37;
+  string pricing_ex_target_currency_code = 38;
+  string pricing_ex_target_currency_base_rate = 39;
+  uint32 pricing_ex_exchange_market_id = 40;
+  double pricing_ex_calculation_rate = 41;
+  string pricing_ex_mathematic_operator_code = 42;
+  string payment_ex_source_currency_code = 43;
+  string payment_ex_source_currency_base_rate = 44;
+  string payment_ex_target_currency_code = 45;
+  string payment_ex_target_currency_base_rate = 46;
+  uint32 payment_ex_exchange_market_id = 47;
+  double payment_ex_calculation_rate = 48;
+  string payment_ex_mathematic_operator_code = 49;
+  string payment_alt_ex_source_currency_code = 50;
+  string payment_alt_ex_source_currency_base_rate = 51;
+  string payment_alt_ex_target_currency_code = 52;
+  string payment_alt_ex_target_currency_base_rate = 53;
+  uint32 payment_alt_ex_exchange_market_id = 54;
+  double payment_alt_ex_calculation_rate = 55;
+  string payment_alt_ex_mathematic_operator_code = 56;
+  double line_extension_amount = 57;
+  double tax_exclusive_amount = 58;
+  double tax_inclusive_amount = 59;
+  double allowance_total_amount = 60;
+  double charge_total_amount = 61;
+  double withholding_tax_total_amount = 62;
+  double prepaid_amount = 63;
+  double payable_rounding_amount = 64;
+  double payable_amount = 65;
+  double payable_alternative_amount = 66;
+}
+
+message CreditNoteHeaderT {
+  google.protobuf.Timestamp issue_date = 1;
+  google.protobuf.Timestamp due_date = 2;
+  google.protobuf.Timestamp tax_point_date = 3;
+  google.protobuf.Timestamp invoice_period_start_date = 4;
+  google.protobuf.Timestamp invoice_period_end_date = 5;
+  google.protobuf.Timestamp tax_ex_date = 6;
+  google.protobuf.Timestamp pricing_ex_date = 7;
+  google.protobuf.Timestamp payment_ex_date = 8;
+  google.protobuf.Timestamp payment_alt_ex_date = 9;
+}
+
+message CreateCreditNoteHeaderRequest {
+  string cnh_id = 1;
+  string issue_date = 2;
+  string due_date = 3;
+  string tax_point_date = 4;
+  string credit_note_type_code = 5;
+  string note = 6;
+  string document_currency_code = 7;
+  string tax_currency_code = 8;
+  string pricing_currency_code = 9;
+  string payment_currency_code = 10;
+  string payment_alt_currency_code = 11;
+  string accounting_cost_code = 12;
+  string accounting_cost = 13;
+  uint32 line_count_numeric = 14;
+  string invoice_period_start_date = 15;
+  string invoice_period_end_date = 16;
+  string discrepancy_response = 17;
+  uint32 order_id = 18;
+  uint32 billing_id = 19;
+  uint32 despatch_id = 20;
+  uint32 receipt_id = 21;
+  uint32 contract_id = 22;
+  uint32 statement_id = 24;
+  string signature = 27;
+  uint32 accounting_supplier_party_id = 28;
+  uint32 accounting_customer_party_id = 29;
+  uint32 payee_party_id = 30;
+  uint32 buyer_customer_party_id = 31;
+  uint32 seller_supplier_party_id = 32;
+  uint32 tax_representative_party_id = 33;
+  string tax_ex_source_currency_code = 34;
+  string tax_ex_source_currency_base_rate = 35;
+  string tax_ex_target_currency_code = 36;
+  string tax_ex_target_currency_base_rate = 37;
+  uint32 tax_ex_exchange_market_id = 38;
+  double tax_ex_calculation_rate = 39;
+  string tax_ex_mathematic_operator_code = 40;
+  string tax_ex_date = 41;
+  string pricing_ex_source_currency_code = 42;
+  string pricing_ex_source_currency_base_rate = 43;
+  string pricing_ex_target_currency_code = 44;
+  string pricing_ex_target_currency_base_rate = 45;
+  uint32 pricing_ex_exchange_market_id = 46;
+  double pricing_ex_calculation_rate = 47;
+  string pricing_ex_mathematic_operator_code = 48;
+  string pricing_ex_date = 49;
+  string payment_ex_source_currency_code = 50;
+  string payment_ex_source_currency_base_rate = 51;
+  string payment_ex_target_currency_code = 52;
+  string payment_ex_target_currency_base_rate = 53;
+  uint32 payment_ex_exchange_market_id = 54;
+  double payment_ex_calculation_rate = 55;
+  string payment_ex_mathematic_operator_code = 56;
+  string payment_ex_date = 57;
+  string payment_alt_ex_source_currency_code = 58;
+  string payment_alt_ex_source_currency_base_rate = 59;
+  string payment_alt_ex_target_currency_code = 60;
+  string payment_alt_ex_target_currency_base_rate = 61;
+  uint32 payment_alt_ex_exchange_market_id = 62;
+  double payment_alt_ex_calculation_rate = 63;
+  string payment_alt_ex_mathematic_operator_code = 64;
+  string payment_alt_ex_date = 65;
+  double line_extension_amount = 66;
+  double tax_exclusive_amount = 67;
+  double tax_inclusive_amount = 68;
+  double allowance_total_amount = 69;
+  double charge_total_amount = 70;
+  double withholding_tax_total_amount = 71;
+  double prepaid_amount = 72;
+  double payable_rounding_amount = 73;
+  double payable_amount = 74;
+  double payable_alternative_amount = 75;
+  string user_id = 76;
+  string user_email = 77;
+  string request_id = 78;
+  repeated CreateCreditNoteLineRequest credit_note_lines = 79;
+}
+
+message CreateCreditNoteHeaderResponse {
+  CreditNoteHeader credit_note_header = 1;
+}
+
+message UpdateCreditNoteHeaderRequest {
+  string note = 1;
+  string tax_currency_code = 2;
+  double charge_total_amount = 3;
+  double prepaid_amount = 4;
+  double payable_rounding_amount = 5;
+  double payable_amount = 6;
+  string id = 7;
+  string user_id = 8;
+  string user_email = 9;
+  string request_id = 10;
+}
+
+message UpdateCreditNoteHeaderResponse {}
+
+message GetCreditNoteHeaderRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message GetCreditNoteHeaderResponse {
+  CreditNoteHeader credit_note_header = 1;
+}
+
+message GetCreditNoteHeaderByPkRequest {
+  common.v1.GetByIdRequest get_by_id_request = 1;
+}
+
+message GetCreditNoteHeaderByPkResponse {
+  CreditNoteHeader credit_note_header = 1;
+}
+
+message GetCreditNoteHeadersRequest {
+  string limit = 1;
+  string next_cursor = 2;
+  string user_email = 3;
+  string request_id = 4;
+}
+
+message GetCreditNoteHeadersResponse {
+  repeated CreditNoteHeader credit_note_headers = 1;
+  string next_cursor = 2;
+}
+
+message CreditNoteLine {
+  CreditNoteLineD credit_note_line_d = 1;
+  CreditNoteLineT credit_note_line_t = 2;
+  common.v1.CrUpdUser cr_upd_user = 3;
+  common.v1.CrUpdTime cr_upd_time = 4;
+}
+
+message CreditNoteLineD {
+  uint32 id = 1;
+  bytes uuid4 = 2;
+  string id_s = 3;
+  string cnl_id = 4;
+  string note = 5;
+  double credited_quantity = 6;
+  double line_extension_amount = 7;
+  string accounting_cost_code = 8;
+  string accounting_cost = 9;
+  string payment_purpose_code = 10;
+  bool free_of_charge_indicator = 11;
+  string discrepancy_response = 12;
+  uint32 order_line_id = 13;
+  uint32 despatch_line_id = 14;
+  uint32 receipt_line_id = 15;
+  uint32 billing_id = 16;
+  uint32 originator_party_id = 17;
+  uint32 item_id = 18;
+  double price_amount = 19;
+  double price_base_quantity = 20;
+  string price_change_reason = 21;
+  string price_type_code = 22;
+  string price_type = 23;
+  double orderable_unit_factor_rate = 24;
+  uint32 price_list_id = 25;
+  uint32 credit_note_header_id = 26;
+}
+
+message CreditNoteLineT {
+  google.protobuf.Timestamp tax_point_date = 1;
+  google.protobuf.Timestamp invoice_period_start_date = 2;
+  google.protobuf.Timestamp invoice_period_end_date = 3;
+  google.protobuf.Timestamp price_validity_period_start_date = 4;
+  google.protobuf.Timestamp price_validity_period_end_date = 5;
+}
+
+message CreateCreditNoteLineRequest {
+  string cnl_id = 1;
+  string note = 2;
+  double credited_quantity = 3;
+  double line_extension_amount = 4;
+  string tax_point_date = 5;
+  string accounting_cost_code = 6;
+  string accounting_cost = 7;
+  string payment_purpose_code = 8;
+  bool free_of_charge_indicator = 9;
+  string invoice_period_start_date = 10;
+  string invoice_period_end_date = 31;
+  string discrepancy_response = 11;
+  uint32 order_line_id = 12;
+  uint32 despatch_line_id = 13;
+  uint32 receipt_line_id = 14;
+  uint32 billing_id = 15;
+  uint32 originator_party_id = 16;
+  uint32 item_id = 17;
+  double price_amount = 18;
+  double price_base_quantity = 19;
+  string price_change_reason = 20;
+  string price_type_code = 21;
+  string price_type = 22;
+  double orderable_unit_factor_rate = 23;
+  string price_validity_period_start_date = 24;
+  string price_validity_period_end_date = 25;
+  uint32 price_list_id = 26;
+  uint32 credit_note_header_id = 27;
+  string user_id = 28;
+  string user_email = 29;
+  string request_id = 30;
+}
+
+message CreateCreditNoteLineResponse {
+  CreditNoteLine credit_note_line = 1;
+}
+
+message GetCreditNoteLinesRequest {
+  common.v1.GetRequest get_request = 1;
+}
+
+message GetCreditNoteLinesResponse {
+  repeated CreditNoteLine credit_note_lines = 1;
+}
